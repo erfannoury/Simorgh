@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Simorgh.Controllers
 {
-    [RequireHttps]
+    //[RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()
