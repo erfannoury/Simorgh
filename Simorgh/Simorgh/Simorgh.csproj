@@ -161,13 +161,31 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HotelController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RoomTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\HotelDbContext\201501011501501_StrLen.cs" />
+    <Compile Include="Migrations\HotelDbContext\201501011501501_StrLen.Designer.cs">
+      <DependentUpon>201501011501501_StrLen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\HotelDbContext\Configuration.cs" />
+    <Compile Include="Migrations\RoomTypeDbContext\201501011327340_InitialCreate.cs" />
+    <Compile Include="Migrations\RoomTypeDbContext\201501011327340_InitialCreate.Designer.cs">
+      <DependentUpon>201501011327340_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\RoomTypeDbContext\201501011501247_StrLen.cs" />
+    <Compile Include="Migrations\RoomTypeDbContext\201501011501247_StrLen.Designer.cs">
+      <DependentUpon>201501011501247_StrLen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\RoomTypeDbContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\HotelModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RoomTypeModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -228,6 +246,16 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="mailConnectionSettings.config" />
+    <Content Include="Views\Hotel\Create.cshtml" />
+    <Content Include="Views\Hotel\Delete.cshtml" />
+    <Content Include="Views\Hotel\Details.cshtml" />
+    <Content Include="Views\Hotel\Edit.cshtml" />
+    <Content Include="Views\Hotel\Index.cshtml" />
+    <Content Include="Views\RoomType\Create.cshtml" />
+    <Content Include="Views\RoomType\Delete.cshtml" />
+    <Content Include="Views\RoomType\Details.cshtml" />
+    <Content Include="Views\RoomType\Edit.cshtml" />
+    <Content Include="Views\RoomType\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -238,6 +266,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\HotelDbContext\201501011501501_StrLen.resx">
+      <DependentUpon>201501011501501_StrLen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\RoomTypeDbContext\201501011327340_InitialCreate.resx">
+      <DependentUpon>201501011327340_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\RoomTypeDbContext\201501011501247_StrLen.resx">
+      <DependentUpon>201501011501247_StrLen.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
