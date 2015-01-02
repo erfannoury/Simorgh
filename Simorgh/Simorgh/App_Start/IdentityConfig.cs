@@ -1,13 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Mail;
+using System.Net.Mime;
+using System.Runtime.InteropServices;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Hosting;
+using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using System.Net;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Simorgh.Models;
@@ -18,7 +26,26 @@ namespace Simorgh
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
+            string text = message.Body;
+            string html = message.Body;
+
+            //TODO customize account verification email
+            var mailMessage = new MailMessage()
+            {
+                From = new MailAddress(ConfigurationManager.AppSettings["MailAddress"], "Simorgh"),
+                Subject = message.Subject,
+            };
+            mailMessage.To.Add(new MailAddress(message.Destination));
+            mailMessage.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Plain));
+            mailMessage.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html));
+
+            //TODO proper setting of the SMTP credentials and options
+            var smtpClient = new SmtpClient("smtp-mail.outlook.com", Convert.ToInt32(587));
+            var credentials = new NetworkCredential(ConfigurationManager.AppSettings["MailAddress"],
+                ConfigurationManager.AppSettings["MailPassword"]);
+            smtpClient.Credentials = credentials;
+            smtpClient.EnableSsl = true;
+            smtpClient.Send(mailMessage);
             return Task.FromResult(0);
         }
     }
@@ -69,17 +96,21 @@ namespace Simorgh
 
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug it in here.
-            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<ApplicationUser>
-            {
-                MessageFormat = "Your security code is {0}"
-            });
+
+            // 2 Factor Authentication isn't used for now
+            //manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<ApplicationUser>
+            //{
+            //    MessageFormat = "Your security code is {0}"
+            //});
+            //manager.SmsService = new SmsService();
+
             manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<ApplicationUser>
             {
-                Subject = "Security Code",
+                Subject = "Security code for registeration in Simorgh",
                 BodyFormat = "Your security code is {0}"
             });
             manager.EmailService = new EmailService();
-            manager.SmsService = new SmsService();
+
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
@@ -108,4 +139,29 @@ namespace Simorgh
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
     }
+
+    //public class ApplicationDbInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+    //{
+    //    protected override void Seed(ApplicationDbContext context)
+    //    {
+    //        InitializeIdentityForEF(context);
+    //        base.Seed(context);
+    //    }
+    //    /// <summary>
+    //    /// Create admin user (admin@admin.com) with password (admin@123456) in the Admin role
+    //    /// </summary>
+    //    private void InitializeIdentityForEF(ApplicationDbContext context)
+    //    {
+    //        var userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+    //        var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationManager>();
+
+    //        //TODO get admin name and password from config files
+    //        const string name = "admin@admin.com";
+    //        const string password = "admin@123456";
+    //        const string roleName = "Admin";
+
+    //        var role = roleManager.
+    //    }
+    //}
 }
