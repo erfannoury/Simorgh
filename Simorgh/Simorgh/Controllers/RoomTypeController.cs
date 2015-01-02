@@ -15,12 +15,14 @@ namespace Simorgh.Controllers
         private RoomTypeDBContext db = new RoomTypeDBContext();
 
         // GET: /RoomType/
+        [Authorize(Roles = "HotelOwner")]
         public ActionResult Index()
         {
             return View(db.RoomTypes.ToList());
         }
 
         // GET: /RoomType/Details/5
+        [Authorize(Roles = "HotelOwner")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +38,7 @@ namespace Simorgh.Controllers
         }
 
         // GET: /RoomType/Create
+        [Authorize(Roles = "HotelOwner")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +49,7 @@ namespace Simorgh.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "HotelOwner")]
         public ActionResult Create([Bind(Include="RoomTypeId,HotelId,ImageFolderId,Title,Description,RoomCapacity,TotalCount,VacantCount,Price")] RoomType roomtype)
         {
             if (ModelState.IsValid)
@@ -59,6 +63,7 @@ namespace Simorgh.Controllers
         }
 
         // GET: /RoomType/Edit/5
+        [Authorize(Roles = "HotelOwner")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +83,7 @@ namespace Simorgh.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "HotelOwner")]
         public ActionResult Edit([Bind(Include="RoomTypeId,HotelId,ImageFolderId,Title,Description,RoomCapacity,TotalCount,VacantCount,Price")] RoomType roomtype)
         {
             if (ModelState.IsValid)
@@ -90,6 +96,7 @@ namespace Simorgh.Controllers
         }
 
         // GET: /RoomType/Delete/5
+        [Authorize(Roles = "HotelOwner")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,6 +114,7 @@ namespace Simorgh.Controllers
         // POST: /RoomType/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "HotelOwner")]
         public ActionResult DeleteConfirmed(int id)
         {
             RoomType roomtype = db.RoomTypes.Find(id);
