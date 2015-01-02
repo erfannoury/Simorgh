@@ -47,10 +47,10 @@ namespace Simorgh.Context
             success = this.CreateRole(_roleManager, "Admin", "Global Access");
             if (!success == true) return success;
 
-            success = this.CreateRole(_roleManager, "CanEdit", "Edit existing records");
+            success = this.CreateRole(_roleManager, "HotelOwner", "Can control hotels");
             if (!success == true) return success;
 
-            success = this.CreateRole(_roleManager, "User", "Restricted to business domain activity");
+            success = this.CreateRole(_roleManager, "User", "A normal user");
             if (!success) return success;
 
             // Create my debug (testing) objects here
@@ -60,15 +60,15 @@ namespace Simorgh.Context
             ApplicationUser user = new ApplicationUser();
             PasswordHasher passwordHasher = new PasswordHasher();
 
-            user.UserName = "youremail@testemail.com";
-            user.Email = "youremail@testemail.com";
+            user.UserName = "admin@testemail.com";
+            user.Email = "admin@testemail.com";
 
-            IdentityResult result = userManager.Create(user, "Pass@123");
+            IdentityResult result = userManager.Create(user, "123456");
 
             success = this.AddUserToRole(userManager, user.Id, "Admin");
             if (!success) return success;
 
-            success = this.AddUserToRole(userManager, user.Id, "CanEdit");
+            success = this.AddUserToRole(userManager, user.Id, "HotelOwner");
             if (!success) return success;
 
             success = this.AddUserToRole(userManager, user.Id, "User");
