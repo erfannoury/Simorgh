@@ -17,7 +17,7 @@ namespace Simorgh.Controllers
         // GET: /RoomType/
         public ActionResult Index()
         {
-            return View(db.Hotels.ToList());
+            return View(db.RoomTypes.ToList());
         }
 
         // GET: /RoomType/Details/5
@@ -27,7 +27,7 @@ namespace Simorgh.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RoomType roomtype = db.Hotels.Find(id);
+            RoomType roomtype = db.RoomTypes.Find(id);
             if (roomtype == null)
             {
                 return HttpNotFound();
@@ -46,11 +46,11 @@ namespace Simorgh.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,HotelId,ImageFolderId,Title,Description,RoomCapacity,TotalCount,VacantCount,Price")] RoomType roomtype)
+        public ActionResult Create([Bind(Include="RoomTypeId,HotelId,ImageFolderId,Title,Description,RoomCapacity,TotalCount,VacantCount,Price")] RoomType roomtype)
         {
             if (ModelState.IsValid)
             {
-                db.Hotels.Add(roomtype);
+                db.RoomTypes.Add(roomtype);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace Simorgh.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RoomType roomtype = db.Hotels.Find(id);
+            RoomType roomtype = db.RoomTypes.Find(id);
             if (roomtype == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace Simorgh.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,HotelId,ImageFolderId,Title,Description,RoomCapacity,TotalCount,VacantCount,Price")] RoomType roomtype)
+        public ActionResult Edit([Bind(Include="RoomTypeId,HotelId,ImageFolderId,Title,Description,RoomCapacity,TotalCount,VacantCount,Price")] RoomType roomtype)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace Simorgh.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RoomType roomtype = db.Hotels.Find(id);
+            RoomType roomtype = db.RoomTypes.Find(id);
             if (roomtype == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace Simorgh.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            RoomType roomtype = db.Hotels.Find(id);
-            db.Hotels.Remove(roomtype);
+            RoomType roomtype = db.RoomTypes.Find(id);
+            db.RoomTypes.Remove(roomtype);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
