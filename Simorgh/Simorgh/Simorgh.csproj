@@ -167,9 +167,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\HotelDbContext\201501011501501_StrLen.cs" />
-    <Compile Include="Migrations\HotelDbContext\201501011501501_StrLen.Designer.cs">
-      <DependentUpon>201501011501501_StrLen.cs</DependentUpon>
+    <Compile Include="Migrations\HotelDbContext\201501011625544_Constraints.cs" />
+    <Compile Include="Migrations\HotelDbContext\201501011625544_Constraints.Designer.cs">
+      <DependentUpon>201501011625544_Constraints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\HotelDbContext\201501011628471_Constraints2.cs" />
+    <Compile Include="Migrations\HotelDbContext\201501011628471_Constraints2.Designer.cs">
+      <DependentUpon>201501011628471_Constraints2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\HotelDbContext\201501020838088_autogen key.cs" />
+    <Compile Include="Migrations\HotelDbContext\201501020838088_autogen key.Designer.cs">
+      <DependentUpon>201501020838088_autogen key.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\HotelDbContext\Configuration.cs" />
     <Compile Include="Migrations\RoomTypeDbContext\201501011327340_InitialCreate.cs" />
@@ -179,6 +187,42 @@
     <Compile Include="Migrations\RoomTypeDbContext\201501011501247_StrLen.cs" />
     <Compile Include="Migrations\RoomTypeDbContext\201501011501247_StrLen.Designer.cs">
       <DependentUpon>201501011501247_StrLen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\RoomTypeDbContext\201501011609093_Constraints.cs" />
+    <Compile Include="Migrations\RoomTypeDbContext\201501011609093_Constraints.Designer.cs">
+      <DependentUpon>201501011609093_Constraints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\RoomTypeDbContext\201501011657334_Constraints2.cs" />
+    <Compile Include="Migrations\RoomTypeDbContext\201501011657334_Constraints2.Designer.cs">
+      <DependentUpon>201501011657334_Constraints2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\RoomTypeDbContext\201501011659060_Constraints3.cs" />
+    <Compile Include="Migrations\RoomTypeDbContext\201501011659060_Constraints3.Designer.cs">
+      <DependentUpon>201501011659060_Constraints3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\RoomTypeDbContext\201501020839519_autogen key.cs" />
+    <Compile Include="Migrations\RoomTypeDbContext\201501020839519_autogen key.Designer.cs">
+      <DependentUpon>201501020839519_autogen key.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\RoomTypeDbContext\201501020901567_changed key.cs" />
+    <Compile Include="Migrations\RoomTypeDbContext\201501020901567_changed key.Designer.cs">
+      <DependentUpon>201501020901567_changed key.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\RoomTypeDbContext\201501020922510_changed key2.cs" />
+    <Compile Include="Migrations\RoomTypeDbContext\201501020922510_changed key2.Designer.cs">
+      <DependentUpon>201501020922510_changed key2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\RoomTypeDbContext\201501020931384_changed key3.cs" />
+    <Compile Include="Migrations\RoomTypeDbContext\201501020931384_changed key3.Designer.cs">
+      <DependentUpon>201501020931384_changed key3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\RoomTypeDbContext\201501020934066_rebuilding the table.cs" />
+    <Compile Include="Migrations\RoomTypeDbContext\201501020934066_rebuilding the table.Designer.cs">
+      <DependentUpon>201501020934066_rebuilding the table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\RoomTypeDbContext\201501021030195_roomtypeid.cs" />
+    <Compile Include="Migrations\RoomTypeDbContext\201501021030195_roomtypeid.Designer.cs">
+      <DependentUpon>201501021030195_roomtypeid.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\RoomTypeDbContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -267,14 +311,47 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\HotelDbContext\201501011501501_StrLen.resx">
-      <DependentUpon>201501011501501_StrLen.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\HotelDbContext\201501011625544_Constraints.resx">
+      <DependentUpon>201501011625544_Constraints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\HotelDbContext\201501011628471_Constraints2.resx">
+      <DependentUpon>201501011628471_Constraints2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\HotelDbContext\201501020838088_autogen key.resx">
+      <DependentUpon>201501020838088_autogen key.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\RoomTypeDbContext\201501011327340_InitialCreate.resx">
       <DependentUpon>201501011327340_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\RoomTypeDbContext\201501011501247_StrLen.resx">
       <DependentUpon>201501011501247_StrLen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\RoomTypeDbContext\201501011609093_Constraints.resx">
+      <DependentUpon>201501011609093_Constraints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\RoomTypeDbContext\201501011657334_Constraints2.resx">
+      <DependentUpon>201501011657334_Constraints2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\RoomTypeDbContext\201501011659060_Constraints3.resx">
+      <DependentUpon>201501011659060_Constraints3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\RoomTypeDbContext\201501020839519_autogen key.resx">
+      <DependentUpon>201501020839519_autogen key.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\RoomTypeDbContext\201501020901567_changed key.resx">
+      <DependentUpon>201501020901567_changed key.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\RoomTypeDbContext\201501020922510_changed key2.resx">
+      <DependentUpon>201501020922510_changed key2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\RoomTypeDbContext\201501020931384_changed key3.resx">
+      <DependentUpon>201501020931384_changed key3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\RoomTypeDbContext\201501020934066_rebuilding the table.resx">
+      <DependentUpon>201501020934066_rebuilding the table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\RoomTypeDbContext\201501021030195_roomtypeid.resx">
+      <DependentUpon>201501021030195_roomtypeid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

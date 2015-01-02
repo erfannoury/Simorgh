@@ -7,13 +7,13 @@ namespace Simorgh.Migrations.HotelDbContext
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class StrLen : IMigrationMetadata
+    public sealed partial class autogenkey : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(StrLen));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(autogenkey));
         
         string IMigrationMetadata.Id
         {
-            get { return "201501011501501_StrLen"; }
+            get { return "201501020838088_autogen key"; }
         }
         
         string IMigrationMetadata.Source
