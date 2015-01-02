@@ -38,7 +38,7 @@ namespace Simorgh.Models
 
     }
 
-    public class RoomTypeDBContext : DbContext
+    public class RoomTypeDbContext : DbContext
     {
         public DbSet<RoomType> RoomTypes { get; set; }
     }
