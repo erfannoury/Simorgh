@@ -12,7 +12,7 @@ namespace Simorgh.Controllers
 {
     public class RoomTypeController : Controller
     {
-        private RoomTypeDBContext db = new RoomTypeDBContext();
+        private RoomTypeDbContext db = new RoomTypeDbContext();
 
         // GET: /RoomType/
         public ActionResult Index()

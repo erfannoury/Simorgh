@@ -12,7 +12,7 @@ namespace Simorgh.Controllers
 {
     public class HotelController : Controller
     {
-        private HotelDBContext db = new HotelDBContext();
+        private HotelDbContext db = new HotelDbContext();
 
         // GET: /Hotel/
         public ActionResult Index()

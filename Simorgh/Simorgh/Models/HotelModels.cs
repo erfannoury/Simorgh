@@ -32,7 +32,7 @@ namespace Simorgh.Models
         public int Star { get; set; }
     }
 
-    public class HotelDBContext : DbContext
+    public class HotelDbContext : DbContext
     {
         public DbSet<Hotel> Hotels { get; set; }
     }

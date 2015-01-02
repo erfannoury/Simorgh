@@ -5,7 +5,7 @@ namespace Simorgh.Migrations.HotelDbContext
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Simorgh.Models.HotelDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Simorgh.Models.HotelDbContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace Simorgh.Migrations.HotelDbContext
             MigrationsDirectory = @"Migrations\HotelDbContext";
         }
 
-        protected override void Seed(Simorgh.Models.HotelDBContext context)
+        protected override void Seed(Simorgh.Models.HotelDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

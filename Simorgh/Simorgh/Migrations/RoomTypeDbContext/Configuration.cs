@@ -5,7 +5,7 @@ namespace Simorgh.Migrations.RoomTypeDbContext
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Simorgh.Models.RoomTypeDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Simorgh.Models.RoomTypeDbContext>
     {
         public Configuration()
         {
@@ -14,7 +14,7 @@ namespace Simorgh.Migrations.RoomTypeDbContext
             ContextKey = "Simorgh.Models.RoomTypeDBContext";
         }
 
-        protected override void Seed(Simorgh.Models.RoomTypeDBContext context)
+        protected override void Seed(Simorgh.Models.RoomTypeDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
