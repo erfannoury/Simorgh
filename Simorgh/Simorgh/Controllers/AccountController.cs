@@ -76,6 +76,24 @@ namespace Simorgh.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var user = await UserManager.FindByEmailAsync(model.Email);
+            
+            // if there is no user with the provided mail address, display an error message
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Invalid login attempt");
+                return View(model);
+            }
+
+            // check to see if user has confirmed the verification email sent to them.
+            // If they haven't yet confirmed their registeration, disallow login attempt
+            // TODO add option to resend their verification email
+            if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+            {
+                ModelState.AddModelError("", "You first need to verify your registration to be able to login to your account.");
+                return View(model);
+            }
+
             switch (result)
             {
                 case SignInStatus.Success:
@@ -155,21 +173,15 @@ namespace Simorgh.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    //Enable two factor-authentication
-                    //await UserManager.SetTwoFactorEnabledAsync(user.Id, true);
-
-                    ViewBag.Link = callbackUrl;
-                    return View("DisplayEmail");
-
-                    //return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
@@ -320,9 +332,7 @@ namespace Simorgh.Controllers
             {
                 return View("Error");
             }
-            //return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
-
-            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl});
+            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
 
         //
