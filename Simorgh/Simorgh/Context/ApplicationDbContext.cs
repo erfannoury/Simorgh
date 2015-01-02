@@ -62,6 +62,7 @@ namespace Simorgh.Context
 
             user.UserName = "admin@testemail.com";
             user.Email = "admin@testemail.com";
+            user.EmailConfirmed = true;
 
             IdentityResult result = userManager.Create(user, "123456");
 
