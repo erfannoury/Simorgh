@@ -305,6 +305,9 @@
     <Content Include="images\zoom-icon2.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\new\css\green\fonts\BBCNassim.eot" />
+    <Content Include="Content\new\css\green\fonts\BBCNassim.ttf" />
+    <Content Include="Content\new\css\green\fonts\BBCNassim.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

@@ -1,11 +1,27 @@
 /* ============================================================
 GLOBAL
 ============================================================ */
+@font-face {
+    font-family:"BBCNassim";
+    src: url('fonts/BBCNassim.eot');
+    src: local("☺" ),
+    url('fonts/BBCNassim.woff')
+    format("woff"),
+    url('fonts/BBCNassim.ttf')
+    format( "truetype" );
+}
+
 body
 {
 	font-family: Dosis;
 	background: #ecf0f1;
 }
+
+.farsi
+{
+    font-family: BBCNassim
+}
+
 h1,h2,h3,h4,h5,h6
 {
 	color: #594754;
