@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Simorgh.Models.Rating>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TravellerUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffBehaviour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomCleanliness)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OutdoorCleanliness)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prestige)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FoodQuality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnvironmentQuality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceQualityRatio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Overall)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelReview)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TravellerUserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotelId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StaffBehaviour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomCleanliness)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OutdoorCleanliness)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prestige)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FoodQuality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnvironmentQuality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceQualityRatio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Overall)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotelReview)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RatingId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RatingId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RatingId })
+        </td>
+    </tr>
+}
+
+</table>

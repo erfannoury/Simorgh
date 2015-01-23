@@ -1,0 +1,112 @@
+﻿@model Simorgh.Models.Rating
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Rating</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TravellerUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TravellerUserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HotelId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HotelId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffBehaviour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffBehaviour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomCleanliness)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomCleanliness)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OutdoorCleanliness)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OutdoorCleanliness)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prestige)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prestige)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FoodQuality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodQuality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnvironmentQuality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnvironmentQuality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceQualityRatio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceQualityRatio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Overall)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Overall)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HotelReview)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HotelReview)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

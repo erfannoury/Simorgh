@@ -1,0 +1,74 @@
+﻿@model Simorgh.Models.RoomReview
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RoomReview</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TravellerUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TravellerUserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomTypeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Review)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Review)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RateUp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RateUp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RateDown)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RateDown)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsConfirmed)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RoomReviewId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

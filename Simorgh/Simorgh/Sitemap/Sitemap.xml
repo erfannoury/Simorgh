@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<urlset>
+  <url>
+    <loc>http://www.simorgh.com/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>http://www.simorgh.com/about</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>http://www.simorgh.com/contact</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>http://www.simorgh.com/hotel</loc>
+    <changefreq>daily</changefreq>
+  </url>
+</urlset>

@@ -67,7 +67,8 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.RoomTypeId }) |
             @Html.ActionLink("Details", "Details", new { id=item.RoomTypeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RoomTypeId })
+            @Html.ActionLink("Delete", "Delete", new { id=item.RoomTypeId }) |
+            @Html.ActionLink("Add Review", "../roomreview/create", new { id = item.RoomTypeId })
         </td>
     </tr>
 }

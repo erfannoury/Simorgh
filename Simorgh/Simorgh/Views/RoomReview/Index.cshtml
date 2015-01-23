@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Simorgh.Models.RoomReview>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TravellerUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomTypeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Review)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RateUp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RateDown)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsConfirmed)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TravellerUserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomTypeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Review)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RateUp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RateDown)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsConfirmed)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RoomReviewId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RoomReviewId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RoomReviewId })
+        </td>
+    </tr>
+}
+
+</table>

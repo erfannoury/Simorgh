@@ -1,0 +1,106 @@
+﻿@model Simorgh.Models.Rating
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rating</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TravellerUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TravellerUserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HotelId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HotelId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffBehaviour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffBehaviour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomCleanliness)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomCleanliness)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OutdoorCleanliness)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OutdoorCleanliness)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prestige)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prestige)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FoodQuality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodQuality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnvironmentQuality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnvironmentQuality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceQualityRatio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceQualityRatio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Overall)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Overall)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HotelReview)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HotelReview)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RatingId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
