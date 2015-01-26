@@ -68,7 +68,7 @@
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id }) |
-            @Html.ActionLink("Add Rating", "../rating/create", new { id = item.Id })
+            @Html.ActionLink("Add Rating", "../rating/create", new { hotelid = item.Id })
         </td>
     </tr>
 }
