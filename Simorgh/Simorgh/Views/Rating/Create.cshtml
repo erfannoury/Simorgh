@@ -1,7 +1,7 @@
 ﻿@model Simorgh.Models.Rating
 
 @{
-    string hotelidval = Request.QueryString["hotelid"];
+    int hotelidval = Convert.ToInt32(Request.QueryString["hotelid"]);
     ViewBag.Title = "Create";
    
 }
@@ -29,7 +29,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HotelId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.HotelId)
+                @Html.EditorFor(model => model.HotelId, new { htmlAttributes = new { @Value = hotelidval } })
                 @Html.ValidationMessageFor(model => model.HotelId)
             </div>
         </div>
