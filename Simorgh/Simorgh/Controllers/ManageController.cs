@@ -67,6 +67,9 @@ namespace Simorgh.Controllers
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
+                Email = await UserManager.GetEmailAsync(userId),
+                CreditValue = (await UserManager.FindByIdAsync(userId)).CreditValue,
+                MobileNumber = (await UserManager.FindByIdAsync(userId)).MobileNumber,
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
@@ -129,6 +132,63 @@ namespace Simorgh.Controllers
             }
             return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
         }
+
+
+        //
+        // GET: /Manage/AddCredit
+        public ActionResult AddCredit()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Manage/AddCredit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AddCredit(AddCreditViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            if (user != null)
+            {
+                user.CreditValue += model.CreditValue;
+                await UserManager.UpdateAsync(user);
+            }
+            return RedirectToAction("Index");
+        }
+
+
+        //
+        // GET: /Manage/ChangeMobile
+        public ActionResult ChangeMobile()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Manage/ChangeMobileNumber
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeMobile(ChangeMobileViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            if (user != null)
+            {
+                user.MobileNumber = model.MobileNumber;
+                await UserManager.UpdateAsync(user);
+            }
+            return RedirectToAction("Index");
+        }
+
 
         //
         // POST: /Manage/EnableTwoFactorAuthentication
