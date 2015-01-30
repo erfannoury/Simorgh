@@ -15,11 +15,13 @@ namespace Simorgh.Controllers
 
         //
         // GET: /UserMessages/
+        [Authorize(Roles = "User, Admin, HotelOwner")]
         public ActionResult Index()
         {
             return View();
         }
 
+        [Authorize(Roles = "User, Admin, HotelOwner")]
         public ActionResult Inbox()
         {
             String username = User.Identity.Name;
@@ -27,6 +29,7 @@ namespace Simorgh.Controllers
             return View(entries.ToList());
         }
 
+        [Authorize(Roles = "User, Admin, HotelOwner")]
         public ActionResult Sent()
         {
             String username = User.Identity.Name;
@@ -35,6 +38,7 @@ namespace Simorgh.Controllers
         }
 
         // GET: /Inbox/Details/5
+        [Authorize(Roles = "User, Admin, HotelOwner")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -56,6 +60,7 @@ namespace Simorgh.Controllers
         }
 
         // GET: /Inbox/Create
+        [Authorize(Roles = "User, Admin, HotelOwner")]
         public ActionResult Create()
         {
             return View();
@@ -66,6 +71,7 @@ namespace Simorgh.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "User, Admin, HotelOwner")]
         public ActionResult Create([Bind(Include = "Id,FromUserName,ToUserName,ReplyToMessage,MessageText,MessageTime,isRead")] UserMessage usermessage)
         {
             usermessage.FromUserName = User.Identity.Name;
