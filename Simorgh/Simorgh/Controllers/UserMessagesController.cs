@@ -23,7 +23,7 @@ namespace Simorgh.Controllers
         public ActionResult Inbox()
         {
             String username = User.Identity.Name;
-            var entries = from u in db.UserMessages where ((u.ToUserName == username) && (u.isRead == false)) select u;
+            var entries = from u in db.UserMessages where ((u.ToUserName == username)) select u;
             return View(entries.ToList());
         }
 
@@ -48,9 +48,8 @@ namespace Simorgh.Controllers
                 return HttpNotFound();
             }
 
-            db.UserMessages.Remove(usermessage);
             usermessage.isRead = true;
-            //db.UserMessages.Add(usermessage);
+            db.Entry(usermessage).State = EntityState.Modified;
             db.SaveChanges();
 
             return View(usermessage);
