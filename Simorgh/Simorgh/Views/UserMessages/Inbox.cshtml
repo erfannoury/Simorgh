@@ -49,7 +49,8 @@
             @Html.DisplayFor(modelItem => item.MessageTime)
         </td>
         <td>
-            @Html.ActionLink("Delete", "DeleteFromInbox", new { id = item.Id })
+            @Html.ActionLink("Delete", "DeleteFromInbox", new { id = item.Id }) |
+            @Html.ActionLink("Reply", "Create", new { rep = item.Id, rec = item.FromUserName })
         </td>
     </tr>
 }

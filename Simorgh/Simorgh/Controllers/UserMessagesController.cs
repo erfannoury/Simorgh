@@ -80,7 +80,28 @@ namespace Simorgh.Controllers
         {
             usermessage.FromUserName = User.Identity.Name;
             usermessage.MessageTime = System.DateTime.Now;
-            if (ModelState.IsValid)
+            Boolean error = false;
+            
+            if(usermessage.ReplyToMessage != 0)
+            {
+                UserMessage rep = db.UserMessages.Find(usermessage.ReplyToMessage);
+                if (rep == null || rep.ToUserName != User.Identity.Name || rep.FromUserName != usermessage.ToUserName)
+                    error = true;
+                else
+                {
+                    int source=0;
+                    while (rep != null)
+                    {
+                        source = rep.Id;
+                        rep = db.UserMessages.Find(rep.ReplyToMessage);
+                    }
+                    usermessage.ReplyToMessage = source;
+                }
+
+            }
+
+
+            if (!error && ModelState.IsValid)
             {
                 db.UserMessages.Add(usermessage);
                 db.SaveChanges();

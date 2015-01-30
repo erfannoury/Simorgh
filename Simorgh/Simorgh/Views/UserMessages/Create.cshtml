@@ -1,6 +1,8 @@
 ﻿@model Simorgh.Models.UserMessage
 
 @{
+    int repval = Convert.ToInt32(Request.QueryString["rep"]);
+    string recval = Request.QueryString["rec"];
     ViewBag.Title = "Compose";
 }
 
@@ -27,18 +29,28 @@
         <div class="form-group">
             <div class="control-label col-md-2">To</div>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ToUserName)
+                @if (repval == 0)
+                {
+                   @Html.EditorFor(model => model.ToUserName)                    
+                }
+                else
+                {
+                   @Html.EditorFor(model => model.ToUserName,
+                   new { htmlAttributes = new { @Value = recval, @readonly = "readonly" } })                    
+                }
+
                 @Html.ValidationMessageFor(model => model.ToUserName)
             </div>
         </div>
 
-        @*<div class="form-group">
+        <div style="display:none;">
             @Html.LabelFor(model => model.ReplyToMessage, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ReplyToMessage)
+                @Html.EditorFor(model => model.ReplyToMessage,
+                new { htmlAttributes = new { @Value = repval, @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.ReplyToMessage)
             </div>
-        </div>*@
+        </div>
 
         <div class="form-group">
             <div class="control-label col-md-2">Message</div>
