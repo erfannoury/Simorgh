@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Inbox";
+    ViewBag.Rowcol = "#CCCCCC";
 }
 
 <h2>Inbox</h2>
@@ -14,42 +15,37 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FromUserName)
+            From
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReplyToMessage)
+            Message
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MessageText)
+            Time
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MessageTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.isRead)
-        </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
+@foreach (var item in Model)
+{
+    if (item.isRead)
+    {
+        ViewBag.Rowcol = "#CCCCCC";
+    }
+    else
+    {
+        ViewBag.Rowcol = "#FFFFFF";
+    }
+    <tr bgcolor=@ViewBag.RowCol onclick="location.href = '@(Url.Action("Details", new { id = item.Id }))'"
+        onmouseover="this.style.cursor='pointer';this.style.textDecoration='underline';"
+        onmouseout="this.style.textDecoration='none';">
         <td>
             @Html.DisplayFor(modelItem => item.FromUserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReplyToMessage)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MessageText)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MessageTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.isRead)
-        </td>
-        <td>
-            @Html.ActionLink("Open", "Details", new { id=item.Id })
         </td>
     </tr>
 }
