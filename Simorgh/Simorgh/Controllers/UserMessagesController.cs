@@ -56,11 +56,17 @@ namespace Simorgh.Controllers
                 return HttpNotFound();
             }
 
-            usermessage.isRead = true;
-            db.Entry(usermessage).State = EntityState.Modified;
+            var conversation = from u in db.UserMessages where ((u.Id == id) || (u.ReplyToMessage == usermessage.ReplyToMessage)
+                                   || (u.Id == usermessage.ReplyToMessage) || (u.ReplyToMessage == usermessage.Id)) select u;
+
+            foreach(var item in conversation)
+            {
+                item.isRead = true;
+                db.Entry(item).State = EntityState.Modified;
+            }
             db.SaveChanges();
 
-            return View(usermessage);
+            return View(conversation.ToList().OrderBy(u => u.MessageTime));
         }
 
         // GET: /Inbox/Create
