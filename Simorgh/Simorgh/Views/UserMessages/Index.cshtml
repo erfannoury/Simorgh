@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Simorgh.Models.UserMessage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Compose Message", "Create") |
+    @Html.ActionLink("Inbox", "Inbox") |
+    @Html.ActionLink("Sent Messages", "Sent")
+</p>
+

@@ -1,0 +1,60 @@
+﻿@model Simorgh.Models.UserMessage
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<p>
+    @Html.ActionLink("Compose Message", "Create") |
+    @Html.ActionLink("Inbox", "Inbox") |
+    @Html.ActionLink("Sent Messages", "Sent")
+</p>
+
+<div>
+    <h4>UserMessage</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FromUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FromUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ToUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReplyToMessage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReplyToMessage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageTime)
+        </dd>
+
+    </dl>
+</div>
