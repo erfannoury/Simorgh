@@ -12,21 +12,20 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>UserMessage</h4>
         <hr />
         @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FromUserName, new { @class = "control-label col-md-2" })
+        <div style="display:none;">
+            <div class="control-label col-md-2">From</div>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FromUserName, new { htmlAttributes = new {
-               @Value = User.Identity.Name, @readonly = "readonly"}})
+                @Html.EditorFor(model => model.FromUserName,
+                new {htmlAttributes = new {@Value = User.Identity.Name,@readonly = "readonly"}})
                 @Html.ValidationMessageFor(model => model.FromUserName)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ToUserName, new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">To</div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ToUserName)
                 @Html.ValidationMessageFor(model => model.ToUserName)
@@ -42,32 +41,23 @@
         </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MessageText, new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">Message</div>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MessageText)
+                @Html.TextAreaFor(model => model.MessageText, 5, 5, null)
                 @Html.ValidationMessageFor(model => model.MessageText)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MessageTime, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MessageTime, new {htmlAttributes = 
-               new {@Value = System.DateTime.Now,@readonly = "readonly"}})
-                @Html.ValidationMessageFor(model => model.MessageTime)
-            </div>
-        </div>
-
-        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Send" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Cancel", "Index")
 </div>
 
 @section Scripts {

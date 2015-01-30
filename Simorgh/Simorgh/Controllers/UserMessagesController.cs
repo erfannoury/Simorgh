@@ -68,6 +68,8 @@ namespace Simorgh.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FromUserName,ToUserName,ReplyToMessage,MessageText,MessageTime,isRead")] UserMessage usermessage)
         {
+            usermessage.FromUserName = User.Identity.Name;
+            usermessage.MessageTime = System.DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.UserMessages.Add(usermessage);
