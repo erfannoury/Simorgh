@@ -23,6 +23,7 @@
         <th>
             Time
         </th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model)
@@ -46,6 +47,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MessageTime)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "DeleteFromInbox", new { id = item.Id })
         </td>
     </tr>
 }

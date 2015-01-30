@@ -25,7 +25,9 @@ namespace Simorgh.Controllers
         public ActionResult Inbox()
         {
             String username = User.Identity.Name;
-            var entries = from u in db.UserMessages where ((u.ToUserName == username)) select u;
+            var entries = from u in db.UserMessages 
+                          where ((u.ToUserName == username) & (u.DeletedFromInbox == false) ) select u;
+            entries = entries.OrderByDescending(u => u.MessageTime);
             return View(entries.ToList());
         }
 
@@ -33,7 +35,9 @@ namespace Simorgh.Controllers
         public ActionResult Sent()
         {
             String username = User.Identity.Name;
-            var entries = from u in db.UserMessages where (u.FromUserName == username) select u;
+            var entries = from u in db.UserMessages
+                          where ((u.FromUserName == username) & (u.DeletedFromSent == false)) select u;
+            entries = entries.OrderByDescending(u => u.MessageTime);
             return View(entries.ToList());
         }
 
@@ -84,6 +88,38 @@ namespace Simorgh.Controllers
             }
 
             return View(usermessage);
+        }
+
+        [Authorize(Roles = "User, Admin, HotelOwner")]
+        public ActionResult DeleteFromInbox(int id)
+        {
+            UserMessage usermessage = db.UserMessages.Find(id);
+            if(usermessage.DeletedFromSent)
+                db.UserMessages.Remove(usermessage);
+            else
+            {
+                usermessage.DeletedFromInbox = true;
+                db.Entry(usermessage).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            db.SaveChanges();
+            return RedirectToAction("Inbox");
+        }
+
+        [Authorize(Roles = "User, Admin, HotelOwner")]
+        public ActionResult DeleteFromSent(int id)
+        {
+            UserMessage usermessage = db.UserMessages.Find(id);
+            if (usermessage.DeletedFromInbox)
+                db.UserMessages.Remove(usermessage);
+            else
+            {
+                usermessage.DeletedFromSent = true;
+                db.Entry(usermessage).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            db.SaveChanges();
+            return RedirectToAction("Sent");
         }
 
         protected override void Dispose(bool disposing)

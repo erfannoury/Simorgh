@@ -29,6 +29,11 @@ namespace Simorgh.Models
 
         public Boolean isRead { get; set; }
 
+        public Boolean DeletedFromSent { get; set; }
+
+        public Boolean DeletedFromInbox { get; set; }
+
+
     }
 
     public class MessageDbContext : DbContext
