@@ -1,0 +1,41 @@
+@model IEnumerable<Simorgh.Models.City>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            CityName
+        </th>
+        <th>
+            Hotels
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CityId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CityId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CityId })
+        </td>
+        <td>
+			@item.CityName
+        </td>
+        <td>
+			@(item.Hotels == null ? "None" : item.Hotels.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+

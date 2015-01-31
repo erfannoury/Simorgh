@@ -1,0 +1,26 @@
+@model Simorgh.Models.City
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>City</legend>
+
+    <div class="display-label">CityName</div>
+    <div class="display-field">@Model.CityName</div>
+
+    <div class="display-label">Hotels</div>
+    <div class="display-field">@(Model.Hotels == null ? "None" : Model.Hotels.Count.ToString())</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

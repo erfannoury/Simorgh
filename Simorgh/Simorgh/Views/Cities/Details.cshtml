@@ -1,0 +1,23 @@
+@model Simorgh.Models.City
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>City</legend>
+
+    <div class="display-label">CityName</div>
+    <div class="display-field">@Model.CityName</div>
+
+    <div class="display-label">Hotels</div>
+    <div class="display-field">@(Model.Hotels == null ? "None" : Model.Hotels.Count.ToString())</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CityId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
