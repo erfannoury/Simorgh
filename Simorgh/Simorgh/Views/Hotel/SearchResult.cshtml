@@ -1,0 +1,96 @@
+﻿@using System.Diagnostics.Eventing.Reader
+@using System.Web.UI.HtmlControls
+@model IEnumerable<Simorgh.Models.Hotel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>نتایج جستجو</h2>
+
+@if (ViewBag.HasResult)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CityId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Longitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Star)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomTypes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageIdList)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CityId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Longitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Latitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Star)
+                </td>
+                <td>
+                    @foreach (var roomtype in item.RoomTypes)
+                    {
+                        @Html.Display(roomtype.Title)
+                    }
+                </td>
+                <td>
+                    @foreach (var imgid in item.ImageIdList)
+                    {
+                        @Html.Display(string.Format("{0}", imgid))
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+                    @Html.ActionLink("Details", "Details", new {id = item.Id}) |
+                    @Html.ActionLink("Delete", "Delete", new {id = item.Id}) |
+                </td>
+            </tr>
+        }
+        </table>
+}
+else
+{
+<p>@ViewBag.ErrorMessage</p>
+}
+
+
+

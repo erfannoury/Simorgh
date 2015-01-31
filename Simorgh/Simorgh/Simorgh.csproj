@@ -177,6 +177,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationUserRole.cs" />
+    <Compile Include="Models\City.cs" />
     <Compile Include="Models\HotelModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -374,6 +375,7 @@
     <Content Include="Views\UserMessages\Index.cshtml" />
     <Content Include="Views\UserMessages\Inbox.cshtml" />
     <Content Include="Views\UserMessages\Sent.cshtml" />
+    <Content Include="Views\Hotel\SearchResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
