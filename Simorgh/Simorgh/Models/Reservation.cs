@@ -12,16 +12,17 @@ namespace Simorgh.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class City
+    public partial class Reservation
     {
-        public City()
-        {
-            this.Hotels = new HashSet<Hotel>();
-        }
+        public string UserId { get; set; }
+        public int RoomTypeId { get; set; }
+        public System.DateTime ReservationTime { get; set; }
+        public System.DateTime CheckInTime { get; set; }
+        public System.DateTime CheckOutTime { get; set; }
+        public byte AdultsCount { get; set; }
+        public byte InfantsCount { get; set; }
     
-        public int CityId { get; set; }
-        public string CityName { get; set; }
-    
-        public virtual ICollection<Hotel> Hotels { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual RoomType RoomType { get; set; }
     }
 }

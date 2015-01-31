@@ -12,14 +12,20 @@ namespace Simorgh.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ImageFile
+    public partial class Rating
     {
-        public int ImageFileId { get; set; }
-        public string Path { get; set; }
-        public int RoomTypeId { get; set; }
+        public string UserId { get; set; }
         public int HotelId { get; set; }
+        public byte StaffBavior { get; set; }
+        public byte RoomCleanliness { get; set; }
+        public byte OutdoorCleanliness { get; set; }
+        public byte Prestige { get; set; }
+        public byte FoodQuality { get; set; }
+        public byte EnvironmentQuality { get; set; }
+        public byte PriceQualityRatio { get; set; }
+        public byte Overal { get; set; }
     
         public virtual Hotel Hotels { get; set; }
-        public virtual RoomType RoomType { get; set; }
+        public virtual AspNetUser AspNetUsers { get; set; }
     }
 }

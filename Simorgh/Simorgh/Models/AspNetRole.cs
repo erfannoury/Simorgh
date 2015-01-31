@@ -12,16 +12,20 @@ namespace Simorgh.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class City
+    public partial class AspNetRole
     {
-        public City()
+        public AspNetRole()
         {
-            this.Hotels = new HashSet<Hotel>();
+            this.AspNetUserRoles = new HashSet<AspNetUserRole>();
+            this.AspNetUserRoles1 = new HashSet<AspNetUserRole>();
         }
     
-        public int CityId { get; set; }
-        public string CityName { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Discriminator { get; set; }
     
-        public virtual ICollection<Hotel> Hotels { get; set; }
+        public virtual ICollection<AspNetUserRole> AspNetUserRoles { get; set; }
+        public virtual ICollection<AspNetUserRole> AspNetUserRoles1 { get; set; }
     }
 }

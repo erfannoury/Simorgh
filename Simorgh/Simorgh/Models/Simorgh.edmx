@@ -1,0 +1,791 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Simorgh.Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SimorghModelStoreContainer">
+    <EntitySet Name="AspNetRoles" EntityType="Simorgh.Model.Store.AspNetRoles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Simorgh.Model.Store.AspNetUserClaims" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Simorgh.Model.Store.AspNetUserLogins" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Simorgh.Model.Store.AspNetUserRoles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AspNetUsers" EntityType="Simorgh.Model.Store.AspNetUsers" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_Role_Id" Association="Simorgh.Model.Store.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_Role_Id">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Simorgh.Model.Store.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Simorgh.Model.Store.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Simorgh.Model.Store.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_ApplicationUser_Id" Association="Simorgh.Model.Store.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_ApplicationUser_Id">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Simorgh.Model.Store.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Discriminator" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="ClaimType" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="ProviderKey" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="RoleId" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="Discriminator" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="Role_Id" Type="nvarchar" Nullable="true" MaxLength="128" />
+    <Property Name="ApplicationUser_Id" Type="nvarchar" Nullable="true" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="CreditValue" Type="int" Nullable="false" />
+    <Property Name="MobileNumber" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Email" Type="nvarchar" Nullable="true" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" Nullable="true" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="BirthDate" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_Role_Id">
+    <End Role="AspNetRoles" Type="Simorgh.Model.Store.AspNetRoles" Multiplicity="0..1" />
+    <End Role="AspNetUserRoles" Type="Simorgh.Model.Store.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Simorgh.Model.Store.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Simorgh.Model.Store.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Simorgh.Model.Store.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Simorgh.Model.Store.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Simorgh.Model.Store.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Simorgh.Model.Store.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_ApplicationUser_Id">
+    <End Role="AspNetUsers" Type="Simorgh.Model.Store.AspNetUsers" Multiplicity="0..1" />
+    <End Role="AspNetUserRoles" Type="Simorgh.Model.Store.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="ApplicationUser_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Simorgh.Model.Store.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Simorgh.Model.Store.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Simorgh.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserRoles" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_Role_Id" FromRole="AspNetRoles" ToRole="AspNetUserRoles" />
+          <NavigationProperty Name="AspNetUserRoles1" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="AspNetRoles" ToRole="AspNetUserRoles" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserRole">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationUser_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetRole" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_Role_Id" FromRole="AspNetUserRoles" ToRole="AspNetRoles" />
+          <NavigationProperty Name="AspNetRole1" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="AspNetUserRoles" ToRole="AspNetRoles" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_ApplicationUser_Id" FromRole="AspNetUserRoles" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser1" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUserRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreditValue" Type="Int32" Nullable="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetUserRoles" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_ApplicationUser_Id" FromRole="AspNetUsers" ToRole="AspNetUserRoles" />
+          <NavigationProperty Name="AspNetUserRoles1" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserRoles" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Reservations" Relationship="Simorgh.Model.AspNetUserReservation" FromRole="AspNetUser" ToRole="Reservation" />
+          <NavigationProperty Name="Messages" Relationship="Simorgh.Model.FK_ToUserID_PK_UserId" FromRole="AspNetUser" ToRole="Message" />
+          <NavigationProperty Name="Messages1" Relationship="Simorgh.Model.FK_FromUserID_PK_UserID" FromRole="AspNetUser" ToRole="Message" />
+          <NavigationProperty Name="Rating" Relationship="Simorgh.Model.FK_Rating_PK_AspNetUser" FromRole="AspNetUser" ToRole="Rating" />
+          <NavigationProperty Name="RoomReviews" Relationship="Simorgh.Model.AspNetUserRoomReview" FromRole="AspNetUser" ToRole="RoomReview" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_Role_Id">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="0..1" />
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="Role_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_ApplicationUser_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="ApplicationUser_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRole" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_Role_Id" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_Role_Id">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_ApplicationUser_Id" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_ApplicationUser_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <EntitySet Name="Hotels" EntityType="Simorgh.Model.Hotel" />
+          <EntitySet Name="ImageFiles" EntityType="Simorgh.Model.ImageFile" />
+          <AssociationSet Name="ImageFileHotel" Association="Simorgh.Model.ImageFileHotel">
+            <End Role="ImageFile" EntitySet="ImageFiles" />
+            <End Role="Hotel" EntitySet="Hotels" />
+          </AssociationSet>
+          <EntitySet Name="RoomTypes" EntityType="Simorgh.Model.RoomType" />
+          <AssociationSet Name="RoomTypeHotel" Association="Simorgh.Model.RoomTypeHotel">
+            <End Role="RoomType" EntitySet="RoomTypes" />
+            <End Role="Hotel" EntitySet="Hotels" />
+          </AssociationSet>
+          <AssociationSet Name="RoomTypeImageFile" Association="Simorgh.Model.RoomTypeImageFile">
+            <End Role="RoomType" EntitySet="RoomTypes" />
+            <End Role="ImageFile" EntitySet="ImageFiles" />
+          </AssociationSet>
+          <EntitySet Name="Cities" EntityType="Simorgh.Model.City" />
+          <AssociationSet Name="CityHotel" Association="Simorgh.Model.FK_HOTEL_PK_CITY">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Hotel" EntitySet="Hotels" />
+          </AssociationSet>
+          <EntitySet Name="Messages" EntityType="Simorgh.Model.Message" />
+          <EntitySet Name="Reservations" EntityType="Simorgh.Model.Reservation" />
+          <AssociationSet Name="AspNetUserReservation" Association="Simorgh.Model.AspNetUserReservation">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserMessage" Association="Simorgh.Model.FK_ToUserID_PK_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserMessage1" Association="Simorgh.Model.FK_FromUserID_PK_UserID">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="RoomTypeReservation" Association="Simorgh.Model.PK_RoomType_FK_Reservation">
+            <End Role="RoomType" EntitySet="RoomTypes" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+          <EntitySet Name="Ratings" EntityType="Simorgh.Model.Rating" />
+          <EntitySet Name="RoomReviews" EntityType="Simorgh.Model.RoomReview" />
+          <AssociationSet Name="RatingHotel" Association="Simorgh.Model.FK_Rating_PK_Hotel">
+            <End Role="Rating" EntitySet="Ratings" />
+            <End Role="Hotel" EntitySet="Hotels" />
+          </AssociationSet>
+          <AssociationSet Name="RatingAspNetUser" Association="Simorgh.Model.FK_Rating_PK_AspNetUser">
+            <End Role="Rating" EntitySet="Ratings" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoomReview" Association="Simorgh.Model.AspNetUserRoomReview">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="RoomReview" EntitySet="RoomReviews" />
+          </AssociationSet>
+          <AssociationSet Name="RoomTypeRoomReview" Association="Simorgh.Model.RoomTypeRoomReview">
+            <End Role="RoomType" EntitySet="RoomTypes" />
+            <End Role="RoomReview" EntitySet="RoomReviews" />
+          </AssociationSet>
+          <AssociationSet Name="MessageMessage" Association="Simorgh.Model.MessageMessage">
+            <End Role="Message" EntitySet="Messages" />
+            <End Role="ReplyToMessage" EntitySet="Messages" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="HotelId" />
+          </Key>
+          <Property Name="HotelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelName" Type="String" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
+          <Property Name="Longtitude" Type="Int64" Nullable="false" />
+          <Property Name="Latitude" Type="Int64" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Star" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="ImageFile" Relationship="Simorgh.Model.ImageFileHotel" FromRole="Hotel" ToRole="ImageFile" />
+          <NavigationProperty Name="RoomType" Relationship="Simorgh.Model.RoomTypeHotel" FromRole="Hotel" ToRole="RoomType" />
+          <NavigationProperty Name="City" Relationship="Simorgh.Model.FK_HOTEL_PK_CITY" FromRole="Hotel" ToRole="City" />
+          <NavigationProperty Name="Rating" Relationship="Simorgh.Model.FK_Rating_PK_Hotel" FromRole="Hotel" ToRole="Rating" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ImageFile">
+          <Key>
+            <PropertyRef Name="ImageFileId" />
+          </Key>
+          <Property Name="ImageFileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Path" Type="String" Nullable="false" />
+          <NavigationProperty Name="Hotels" Relationship="Simorgh.Model.ImageFileHotel" FromRole="ImageFile" ToRole="Hotel" />
+          <NavigationProperty Name="RoomType" Relationship="Simorgh.Model.RoomTypeImageFile" FromRole="ImageFile" ToRole="RoomType" />
+          <Property Name="RoomTypeId" Type="Int32" Nullable="false" />
+          <Property Name="HotelId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ImageFileHotel">
+          <End Type="Simorgh.Model.ImageFile" Role="ImageFile" Multiplicity="*" />
+          <End Type="Simorgh.Model.Hotel" Role="Hotel" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Hotel">
+              <PropertyRef Name="HotelId" />
+            </Principal>
+            <Dependent Role="ImageFile">
+              <PropertyRef Name="HotelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RoomType">
+          <Key>
+            <PropertyRef Name="RoomTypeId" />
+          </Key>
+          <Property Name="RoomTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomTypeName" Type="String" Nullable="false" />
+          <Property Name="RoomTypeDescription" Type="String" Nullable="false" />
+          <Property Name="RoomCapacity" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Hotels" Relationship="Simorgh.Model.RoomTypeHotel" FromRole="RoomType" ToRole="Hotel" />
+          <NavigationProperty Name="ImageFiles" Relationship="Simorgh.Model.RoomTypeImageFile" FromRole="RoomType" ToRole="ImageFile" />
+          <NavigationProperty Name="Reservations" Relationship="Simorgh.Model.PK_RoomType_FK_Reservation" FromRole="RoomType" ToRole="Reservation" />
+          <NavigationProperty Name="RoomReviews" Relationship="Simorgh.Model.RoomTypeRoomReview" FromRole="RoomType" ToRole="RoomReview" />
+          <Property Name="HotelId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="RoomTypeHotel">
+          <End Type="Simorgh.Model.RoomType" Role="RoomType" Multiplicity="*" />
+          <End Type="Simorgh.Model.Hotel" Role="Hotel" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Hotel">
+              <PropertyRef Name="HotelId" />
+            </Principal>
+            <Dependent Role="RoomType">
+              <PropertyRef Name="HotelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RoomTypeImageFile">
+          <End Type="Simorgh.Model.RoomType" Role="RoomType" Multiplicity="1" />
+          <End Type="Simorgh.Model.ImageFile" Role="ImageFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomType">
+              <PropertyRef Name="RoomTypeId" />
+            </Principal>
+            <Dependent Role="ImageFile">
+              <PropertyRef Name="RoomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" Nullable="false" />
+          <NavigationProperty Name="Hotels" Relationship="Simorgh.Model.FK_HOTEL_PK_CITY" FromRole="City" ToRole="Hotel" />
+        </EntityType>
+        <Association Name="FK_HOTEL_PK_CITY">
+          <End Type="Simorgh.Model.City" Role="City" Multiplicity="1" />
+          <End Type="Simorgh.Model.Hotel" Role="Hotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Hotel">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="String" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromUserId" Type="String" Nullable="false" />
+          <Property Name="ToUserId" Type="String" Nullable="false" />
+          <Property Name="MessageText" Type="String" Nullable="false" />
+          <Property Name="MessageTime" Type="DateTime" Nullable="false" />
+          <Property Name="IsRead" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="FromUser" Relationship="Simorgh.Model.FK_ToUserID_PK_UserId" FromRole="Message" ToRole="AspNetUser" />
+          <NavigationProperty Name="ToUser" Relationship="Simorgh.Model.FK_FromUserID_PK_UserID" FromRole="Message" ToRole="AspNetUser" />
+          <Property Name="ReplyToMessageId" Type="String" Nullable="true" />
+          <NavigationProperty Name="Messages" Relationship="Simorgh.Model.MessageMessage" FromRole="Message" ToRole="ReplyToMessage" />
+          <NavigationProperty Name="ReplyToMessage" Relationship="Simorgh.Model.MessageMessage" FromRole="ReplyToMessage" ToRole="Message" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="ReservationTime" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoomTypeId" />
+          </Key>
+          <NavigationProperty Name="AspNetUser" Relationship="Simorgh.Model.AspNetUserReservation" FromRole="Reservation" ToRole="AspNetUser" />
+          <Property Name="UserId" Type="String" Nullable="false" />
+          <Property Name="RoomTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ReservationTime" Type="DateTime" Nullable="false" />
+          <Property Name="CheckInTime" Type="DateTime" Nullable="false" />
+          <Property Name="CheckOutTime" Type="DateTime" Nullable="false" />
+          <Property Name="AdultsCount" Type="Byte" Nullable="false" />
+          <Property Name="InfantsCount" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="RoomType" Relationship="Simorgh.Model.PK_RoomType_FK_Reservation" FromRole="Reservation" ToRole="RoomType" />
+        </EntityType>
+        <Association Name="AspNetUserReservation">
+          <End Type="Simorgh.Model.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="Simorgh.Model.Reservation" Role="Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToUserID_PK_UserId">
+          <End Type="Simorgh.Model.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="Simorgh.Model.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="ToUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FromUserID_PK_UserID">
+          <End Type="Simorgh.Model.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="Simorgh.Model.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="FromUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PK_RoomType_FK_Reservation">
+          <End Type="Simorgh.Model.RoomType" Role="RoomType" Multiplicity="1" />
+          <End Type="Simorgh.Model.Reservation" Role="Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomType">
+              <PropertyRef Name="RoomTypeId" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="RoomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="HotelId" />
+          </Key>
+          <Property Name="UserId" Type="String" Nullable="false" />
+          <Property Name="HotelId" Type="Int32" Nullable="false" />
+          <Property Name="StaffBavior" Type="Byte" Nullable="false" />
+          <Property Name="RoomCleanliness" Type="Byte" Nullable="false" />
+          <Property Name="OutdoorCleanliness" Type="Byte" Nullable="false" />
+          <Property Name="Prestige" Type="Byte" Nullable="false" />
+          <Property Name="FoodQuality" Type="Byte" Nullable="false" />
+          <Property Name="EnvironmentQuality" Type="Byte" Nullable="false" />
+          <Property Name="PriceQualityRatio" Type="Byte" Nullable="false" />
+          <Property Name="Overal" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Hotels" Relationship="Simorgh.Model.FK_Rating_PK_Hotel" FromRole="Rating" ToRole="Hotel" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Simorgh.Model.FK_Rating_PK_AspNetUser" FromRole="Rating" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="RoomReview">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoomTypeId" />
+            <PropertyRef Name="ReviewTimestap" />
+          </Key>
+          <Property Name="UserId" Type="String" Nullable="false" />
+          <Property Name="RoomTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ReviewTimestap" Type="DateTime" Nullable="false" />
+          <Property Name="Review" Type="String" Nullable="false" />
+          <Property Name="UpVotes" Type="Int32" Nullable="false" />
+          <Property Name="DownVotes" Type="Int32" Nullable="false" />
+          <Property Name="IsConfirmed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Simorgh.Model.AspNetUserRoomReview" FromRole="RoomReview" ToRole="AspNetUser" />
+          <NavigationProperty Name="RoomType" Relationship="Simorgh.Model.RoomTypeRoomReview" FromRole="RoomReview" ToRole="RoomType" />
+        </EntityType>
+        <Association Name="FK_Rating_PK_Hotel">
+          <End Type="Simorgh.Model.Rating" Role="Rating" Multiplicity="*" />
+          <End Type="Simorgh.Model.Hotel" Role="Hotel" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Hotel">
+              <PropertyRef Name="HotelId" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="HotelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_PK_AspNetUser">
+          <End Type="Simorgh.Model.Rating" Role="Rating" Multiplicity="*" />
+          <End Type="Simorgh.Model.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoomReview">
+          <End Type="Simorgh.Model.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="Simorgh.Model.RoomReview" Role="RoomReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoomReview">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RoomTypeRoomReview">
+          <End Type="Simorgh.Model.RoomType" Role="RoomType" Multiplicity="1" />
+          <End Type="Simorgh.Model.RoomReview" Role="RoomReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomType">
+              <PropertyRef Name="RoomTypeId" />
+            </Principal>
+            <Dependent Role="RoomReview">
+              <PropertyRef Name="RoomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MessageMessage">
+          <End Type="Simorgh.Model.Message" Role="Message" Multiplicity="*" />
+          <End Type="Simorgh.Model.Message" Role="ReplyToMessage" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ReplyToMessage">
+              <PropertyRef Name="MessageId" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="ReplyToMessageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SimorghModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.AspNetRole)">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.AspNetUserClaim)">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.AspNetUserLogin)">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserRoles">
+      <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.AspNetUserRole)">
+        <MappingFragment StoreEntitySet="AspNetUserRoles">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+          <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+          <ScalarProperty Name="ApplicationUser_Id" ColumnName="ApplicationUser_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.AspNetUser)">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CreditValue" ColumnName="CreditValue" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

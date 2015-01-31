@@ -46,6 +46,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -183,17 +185,60 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationUserRole.cs" />
-    <Compile Include="Models\City.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>Simorgh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>Simorgh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>Simorgh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>Simorgh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserRole.cs">
+      <DependentUpon>Simorgh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\City.cs">
+      <DependentUpon>Simorgh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hotel.cs">
+      <DependentUpon>Simorgh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Message.cs">
+      <DependentUpon>Simorgh.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ReservationItemModels.cs" />
     <Compile Include="Models\ReservationModels.cs" />
     <Compile Include="Models\HotelModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ImageFile.cs" />
+    <Compile Include="Models\ImageFile.cs">
+      <DependentUpon>Simorgh.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RatingModels.cs" />
     <Compile Include="Models\RoleViewModels.cs" />
+    <Compile Include="Models\RoomType.cs">
+      <DependentUpon>Simorgh.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RoomTypeModels.cs" />
     <Compile Include="Models\RoomReviewModels.cs" />
+    <Compile Include="Models\Simorgh.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Simorgh.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Simorgh.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Simorgh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Simorgh.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Simorgh.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\SimorghContext.cs" />
     <Compile Include="Models\UserMessageModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -309,6 +354,7 @@
     <Content Include="images\slide4.jpg" />
     <Content Include="images\zoom-icon.png" />
     <Content Include="images\zoom-icon2.png" />
+    <Content Include="Models\Simorgh.edmx.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-rtl.css.map" />
@@ -323,6 +369,23 @@
     <Content Include="fonts\ss-social-circle.eot" />
     <Content Include="fonts\ss-social-circle.ttf" />
     <Content Include="fonts\ss-social-circle.woff" />
+    <EntityDeploy Include="Models\Simorgh.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Simorgh.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Simorgh.edmx.diagram">
+      <DependentUpon>Simorgh.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Simorgh.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Simorgh.edmx</DependentUpon>
+      <LastGenOutput>Simorgh.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Simorgh.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Simorgh.edmx</DependentUpon>
+      <LastGenOutput>Simorgh.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -451,6 +514,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
