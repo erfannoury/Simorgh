@@ -2,12 +2,16 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using System;
 
 namespace Simorgh.Models
 {
     public class IndexViewModel
     {
         public bool HasPassword { get; set; }
+        public string Email { get; set; }
+        public int CreditValue { get; set; }
+        public string MobileNumber { get; set; }
         public IList<UserLoginInfo> Logins { get; set; }
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
@@ -64,6 +68,23 @@ namespace Simorgh.Models
         [Phone]
         [Display(Name = "Phone Number")]
         public string Number { get; set; }
+    }
+
+    public class AddCreditViewModel
+    {
+        [Required]
+        [Range(10000,50000000)]
+        [Display(Name = "Credit Value")]
+        public int CreditValue { get; set; }
+    }
+
+    public class ChangeMobileViewModel
+    {
+        [Required]
+        [RegularExpression(@"^[0-9''+'\s]{1,40}$",
+        ErrorMessage = "Characters are not allowed.")]
+        [Display(Name = "Mobile Number")]
+        public string MobileNumber { get; set; }
     }
 
     public class VerifyPhoneNumberViewModel

@@ -25,8 +25,11 @@ namespace Simorgh.Controllers
         public ActionResult Inbox()
         {
             String username = User.Identity.Name;
+            Boolean isUserAdmin = User.IsInRole("Admin");
             var entries = from u in db.UserMessages 
-                          where ((u.ToUserName == username) & (u.DeletedFromInbox == false) ) select u;
+                          where ((u.ToUserName == username ||
+                          (u.ToUserName=="support" & isUserAdmin))
+                          & (u.DeletedFromInbox == false) ) select u;
             entries = entries.OrderByDescending(u => u.MessageTime);
             return View(entries.ToList());
         }
@@ -86,12 +89,17 @@ namespace Simorgh.Controllers
         {
             usermessage.FromUserName = User.Identity.Name;
             usermessage.MessageTime = System.DateTime.Now;
+            if (!User.IsInRole("Admin"))
+                usermessage.ToUserName = "support";
+
             Boolean error = false;
             
             if(usermessage.ReplyToMessage != 0)
             {
                 UserMessage rep = db.UserMessages.Find(usermessage.ReplyToMessage);
-                if (rep == null || rep.ToUserName != User.Identity.Name || rep.FromUserName != usermessage.ToUserName)
+                if (rep == null || 
+                    ((rep.ToUserName != User.Identity.Name) && !(rep.ToUserName == "support" && User.IsInRole("Admin")))
+                    || rep.FromUserName != usermessage.ToUserName)
                     error = true;
                 else
                 {

@@ -376,6 +376,8 @@
     <Content Include="Views\UserMessages\Inbox.cshtml" />
     <Content Include="Views\UserMessages\Sent.cshtml" />
     <Content Include="Views\Hotel\SearchResult.cshtml" />
+    <Content Include="Views\Manage\AddCredit.cshtml" />
+    <Content Include="Views\Manage\ChangeMobile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
