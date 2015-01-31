@@ -16,13 +16,6 @@
         <hr />
         @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ImageFolderId, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ImageFolderId)
-                @Html.ValidationMessageFor(model => model.ImageFolderId)
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
@@ -33,10 +26,11 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CityIdCity, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CityId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CityIdCity)
-                @Html.ValidationMessageFor(model => model.CityIdCity)
+                @Html.TextBox("cityName", null, new {required="required"})
+                @Html.Label("فقط نام شهر را وارد کنید.")
+                
             </div>
         </div>
 
@@ -79,6 +73,15 @@
                 @Html.ValidationMessageFor(model => model.Star)
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageIds, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("ImageIds")
+                @Html.Label("Comma separated")
+            </div>
+        </div>
+        
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
