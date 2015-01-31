@@ -31,6 +31,7 @@ namespace Simorgh
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/ss-social-circle.css",
+                      "~/Content/font-awesome.css",
 //                      "~/Content/ripples.css",
                       "~/Content/bootstrap-rtl.css",                      
                       "~/Content/site.css"));
