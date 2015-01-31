@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -13,16 +14,35 @@ namespace Simorgh.Controllers
     public class HotelController : Controller
     {
         private HotelDbContext db = new HotelDbContext();
+        private CityDbContext cityDb = new CityDbContext();
 
         // GET: /Hotel/
-        [Authorize(Roles = "HotelOwner")]
+        [Authorize(Roles = "Admin, HotelOwner")]
         public ActionResult Index()
         {
             return View(db.Hotels.ToList());
         }
 
+        // GET: /Hotel/SearchResult/{name}
+        [HttpGet]
+        public ActionResult SearchResult(string cityName)
+        {
+            var hotels = from h in db.Hotels
+                         select h;
+            if (!String.IsNullOrEmpty(cityName))
+            {
+                var id = cityDb.Cities.Where(c => c.CityName.Contains(cityName)).FirstOrDefault().Id;
+                hotels = hotels.Where(h => h.CityId == id);
+                ViewBag.HasResult = true;
+                return View(hotels.ToList());
+            }
+            ViewBag.HasResult = false;
+            ViewBag.ErrorMessage = "نتیجه ای یافت نشد.";
+            return View();
+        }
+
         // GET: /Hotel/Details/5
-        [Authorize(Roles = "HotelOwner")]
+        [Authorize(Roles = "Admin, HotelOwner")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,7 +58,7 @@ namespace Simorgh.Controllers
         }
 
         // GET: /Hotel/Create
-        [Authorize(Roles = "HotelOwner")]
+        [Authorize(Roles = "Admin, HotelOwner")]
         public ActionResult Create()
         {
             return View();
@@ -49,11 +69,30 @@ namespace Simorgh.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "HotelOwner")]
-        public ActionResult Create([Bind(Include="Id,ImageFolderId,Name,CityIdCity,Address,Longitude,Latitude,Description,Star")] Hotel hotel)
+        [Authorize(Roles = "Admin, HotelOwner")]
+        public ActionResult Create([Bind(Include="Id,Name,Address,Longitude,Latitude,Description,Star")] Hotel hotel, string ImageIds, string cityName)
         {
             if (ModelState.IsValid)
             {
+                
+                foreach (var imgid in ImageIds.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    hotel.ImageIdList.Add(int.Parse(imgid));
+                }
+
+                var city = cityDb.Cities.Where(c => c.CityName == cityName).FirstOrDefault();
+
+                if (city != null)
+                {
+                    hotel.CityId = city.Id;
+                }
+                else
+                {
+                    cityDb.Cities.Add(new City() {CityName = cityName});
+                    cityDb.SaveChanges();
+                    hotel.CityId = cityDb.Cities.Where(c => c.CityName == cityName).First().Id;
+                }
+
                 db.Hotels.Add(hotel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -63,7 +102,7 @@ namespace Simorgh.Controllers
         }
 
         // GET: /Hotel/Edit/5
-        [Authorize(Roles = "HotelOwner")]
+        [Authorize(Roles = "Admin, HotelOwner")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,7 +123,7 @@ namespace Simorgh.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "HotelOwner")]
-        public ActionResult Edit([Bind(Include="Id,ImageFolderId,Name,CityIdCity,Address,Longitude,Latitude,Description,Star")] Hotel hotel)
+        public ActionResult Edit([Bind(Include="Id,ImageFolderId,Name,CityId,Address,Longitude,Latitude,Description,Star")] Hotel hotel)
         {
             if (ModelState.IsValid)
             {
