@@ -170,6 +170,8 @@
     <Compile Include="Controllers\ImageFilesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RatingController.cs" />
+    <Compile Include="Controllers\ReservationItemsController.cs" />
+    <Compile Include="Controllers\ReservationsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\RoomReviewController.cs" />
     <Compile Include="Controllers\RoomTypeController.cs" />
@@ -427,6 +429,18 @@
     <Content Include="Views\ImageFiles\Details.cshtml" />
     <Content Include="Views\ImageFiles\Index.cshtml" />
     <Content Include="Views\ImageFiles\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Reservations\Create.cshtml" />
+    <Content Include="Views\Reservations\Edit.cshtml" />
+    <Content Include="Views\Reservations\Delete.cshtml" />
+    <Content Include="Views\Reservations\Details.cshtml" />
+    <Content Include="Views\Reservations\Index.cshtml" />
+    <Content Include="Views\Reservations\_CreateOrEdit.cshtml" />
+    <Content Include="Views\ReservationItems\Create.cshtml" />
+    <Content Include="Views\ReservationItems\Edit.cshtml" />
+    <Content Include="Views\ReservationItems\Delete.cshtml" />
+    <Content Include="Views\ReservationItems\Details.cshtml" />
+    <Content Include="Views\ReservationItems\Index.cshtml" />
+    <Content Include="Views\ReservationItems\_CreateOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

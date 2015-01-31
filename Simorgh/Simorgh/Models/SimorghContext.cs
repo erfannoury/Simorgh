@@ -24,5 +24,9 @@ namespace Simorgh.Models
         public DbSet<Simorgh.Models.RoomType> RoomTypes { get; set; }
 
         public DbSet<Simorgh.Models.ImageFile> ImageFiles { get; set; }
+
+        public DbSet<Simorgh.Models.Reservation> Reservations { get; set; }
+
+        public DbSet<Simorgh.Models.ReservationItem> ReservationItems { get; set; }
     }
 }
