@@ -11,13 +11,6 @@
     <h4>Hotel</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageIdList)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImageIdList)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -73,6 +66,20 @@
 
         <dd>
             @Html.DisplayFor(model => model.Star)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.HotelImageFiles)
+        </dt>
+        <dd>
+            <div class="display-field">@(Model.HotelImageFiles == null ? "None" : Model.HotelImageFiles.Count.ToString())</div>
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomTypes)
+        </dt>
+        <dd>
+            <div class="display-field">@(Model.RoomTypes == null ? "None" : Model.RoomTypes.Count.ToString())</div>
         </dd>
 
     </dl>

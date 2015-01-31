@@ -10,12 +10,8 @@ namespace Simorgh.Models
     public class Hotel
     {
         [Key, DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int HotelId { get; set; }
 
-        // This is an internal property.
-        public List<int> ImageIdList { get; set; }
-
-        public string ImageIds { get; set; }
 
         [Required]
         [StringLength(60, ErrorMessage = "نام هتل حداکثر می‌تواند 60 کاراکتر باشد.")]
@@ -24,6 +20,8 @@ namespace Simorgh.Models
         // This is an internal property.
         [Range(0, double.MaxValue, ErrorMessage = "The value must be greater than 0")]
         public int CityId { get; set; }
+
+        public virtual City HotelCity { get; set; }
 
 
         [StringLength(1000, ErrorMessage = "آدرس نمی‌تواند طولانی‌تر از 1000 کاراکتر باشد.")]
@@ -41,14 +39,14 @@ namespace Simorgh.Models
 
         public string PhoneNumber { get; set; }
 
-        public List<RoomType> RoomTypes { get; set; }
+        public virtual ICollection<RoomType> RoomTypes { get; set; }
 
-        // amenity: a desirable or useful feature or facility of a building or place
-        public List<string> HotelAmenities { get; set; }
+        public virtual ICollection<ImageFile> HotelImageFiles { get; set; } 
+        
+
 
         public Hotel()
         {
-            ImageIdList = new List<int>();
             RoomTypes = new List<RoomType>();
         }
 

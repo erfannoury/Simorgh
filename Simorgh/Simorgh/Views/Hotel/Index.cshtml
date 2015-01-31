@@ -16,7 +16,7 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CityId)
+            @Html.DisplayNameFor(model => model.HotelCity)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Address)
@@ -37,7 +37,10 @@
             @Html.DisplayNameFor(model => model.RoomTypes)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ImageIdList)
+            @Html.DisplayNameFor(model => model.HotelImageFiles)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomTypes)
         </th>
         <th>
         </th>
@@ -49,7 +52,7 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CityId)
+            @Html.DisplayFor(modelItem => item.HotelCity.CityName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Address)
@@ -73,11 +76,10 @@
             }
         </td>
         <td>
-            @foreach (var imgid in item.ImageIdList)
-            {
-                @Html.Display(string.Format("{0}", imgid))
-                <br/>
-            }
+            @(item.RoomTypes == null ? "None" : item.RoomTypes.Count.ToString())
+        </td>
+        <td>
+            @(item.HotelImageFiles == null ? "None" : item.HotelImageFiles.Count.ToString())
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

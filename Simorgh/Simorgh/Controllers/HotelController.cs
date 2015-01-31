@@ -13,14 +13,13 @@ namespace Simorgh.Controllers
 {
     public class HotelController : Controller
     {
-        private HotelDbContext db = new HotelDbContext();
-        private CityDbContext cityDb = new CityDbContext();
+        private SimorghContext context = new SimorghContext();
 
         // GET: /Hotel/
         [Authorize(Roles = "Admin, HotelOwner")]
         public ActionResult Index()
         {
-            return View(db.Hotels.ToList());
+            return View(context.Hotels.Include(hotel => hotel.RoomTypes).Include(hotel => hotel.HotelImageFiles).ToList());
         }
 
         // GET: /Hotel/SearchResult/{name}
@@ -34,7 +33,7 @@ namespace Simorgh.Controllers
                 int id;
                 try
                 {
-                    id = cityDb.Cities.Where(c => c.CityName.Contains(cityName)).FirstOrDefault().Id;
+                    id = cityDb.Cities.Where(c => c.CityName.Contains(cityName)).FirstOrDefault().CityId;
                     if (id == null)
                         throw new Exception();
                 }
@@ -61,7 +60,7 @@ namespace Simorgh.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Hotel hotel = db.Hotels.Find(id);
+            Hotel hotel = context.Hotels.Find(id);
             if (hotel == null)
             {
                 return HttpNotFound();
@@ -73,6 +72,7 @@ namespace Simorgh.Controllers
         [Authorize(Roles = "Admin, HotelOwner")]
         public ActionResult Create()
         {
+            ViewBag.PossibleCities = context.Cities;
             return View();
         }
 
@@ -82,34 +82,35 @@ namespace Simorgh.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, HotelOwner")]
-        public ActionResult Create([Bind(Include="Id,Name,Address,Longitude,Latitude,Description,Star")] Hotel hotel, string ImageIds, string cityName)
+        public ActionResult Create([Bind(Include="Id,Name,Address,Longitude,Latitude,Description,Star")] Hotel hotel, string cityName)
         {
             if (ModelState.IsValid)
             {
                 
-                foreach (var imgid in ImageIds.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-                {
-                    hotel.ImageIdList.Add(int.Parse(imgid));
-                }
+                //foreach (var imgid in ImageIds.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                //{
+                //    hotel.ImageIdList.Add(int.Parse(imgid));
+                //}
 
-                var city = cityDb.Cities.Where(c => c.CityName == cityName).FirstOrDefault();
+                var city = context.Cities.Where(c => c.CityName == cityName).FirstOrDefault();
 
                 if (city != null)
                 {
-                    hotel.CityId = city.Id;
+                    hotel.CityId = city.CityId;
+                    hotel.HotelCity = city;
                 }
                 else
                 {
-                    cityDb.Cities.Add(new City() {CityName = cityName});
-                    cityDb.SaveChanges();
-                    hotel.CityId = cityDb.Cities.Where(c => c.CityName == cityName).First().Id;
+                    context.Cities.Add(new City() {CityName = cityName});
+                    context.SaveChanges();
+                    hotel.CityId = context.Cities.Where(c => c.CityName == cityName).First().CityId;
                 }
 
-                db.Hotels.Add(hotel);
-                db.SaveChanges();
+                context.Hotels.Add(hotel);
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.PossibleCities = context.Cities;
             return View(hotel);
         }
 
@@ -121,7 +122,7 @@ namespace Simorgh.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Hotel hotel = db.Hotels.Find(id);
+            Hotel hotel = context.Hotels.Find(id);
             if (hotel == null)
             {
                 return HttpNotFound();
@@ -139,8 +140,8 @@ namespace Simorgh.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(hotel).State = EntityState.Modified;
-                db.SaveChanges();
+                context.Entry(hotel).State = EntityState.Modified;
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(hotel);
@@ -154,7 +155,7 @@ namespace Simorgh.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Hotel hotel = db.Hotels.Find(id);
+            Hotel hotel = context.Hotels.Find(id);
             if (hotel == null)
             {
                 return HttpNotFound();
@@ -167,9 +168,9 @@ namespace Simorgh.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Hotel hotel = db.Hotels.Find(id);
-            db.Hotels.Remove(hotel);
-            db.SaveChanges();
+            Hotel hotel = context.Hotels.Find(id);
+            context.Hotels.Remove(hotel);
+            context.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -177,7 +178,7 @@ namespace Simorgh.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                context.Dispose();
             }
             base.Dispose(disposing);
         }
