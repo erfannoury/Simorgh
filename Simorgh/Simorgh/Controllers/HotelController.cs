@@ -31,7 +31,19 @@ namespace Simorgh.Controllers
                          select h;
             if (!String.IsNullOrEmpty(cityName))
             {
-                var id = cityDb.Cities.Where(c => c.CityName.Contains(cityName)).FirstOrDefault().Id;
+                int id;
+                try
+                {
+                    id = cityDb.Cities.Where(c => c.CityName.Contains(cityName)).FirstOrDefault().Id;
+                    if (id == null)
+                        throw new Exception();
+                }
+                catch (Exception)
+                {
+                    ViewBag.HasResult = false;
+                    ViewBag.ErrorMessage = "نتیجه ای یافت نشد.";
+                    return View();
+                }
                 hotels = hotels.Where(h => h.CityId == id);
                 ViewBag.HasResult = true;
                 return View(hotels.ToList());
