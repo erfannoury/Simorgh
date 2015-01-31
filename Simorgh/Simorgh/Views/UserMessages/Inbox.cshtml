@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Simorgh.Models.UserMessage>
+
+@{
+    ViewBag.Title = "Inbox";
+    ViewBag.Rowcol = "#CCCCCC";
+}
+
+<h2>Inbox</h2>
+
+<p>
+    @Html.ActionLink("Compose Message", "Create") |
+    @Html.ActionLink("Inbox", "Inbox") |
+    @Html.ActionLink("Sent Messages", "Sent")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            From
+        </th>
+        <th>
+            Message
+        </th>
+        <th>
+            Time
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    if (item.isRead)
+    {
+        ViewBag.Rowcol = "#CCCCCC";
+    }
+    else
+    {
+        ViewBag.Rowcol = "#FFFFFF";
+    }
+    <tr bgcolor=@ViewBag.RowCol onclick="location.href = '@(Url.Action("Details", new { id = item.Id }))'"
+        onmouseover="this.style.cursor='pointer';">
+        <td>
+            @Html.DisplayFor(modelItem => item.FromUserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MessageText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MessageTime)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "DeleteFromInbox", new { id = item.Id }) |
+            @Html.ActionLink("Reply", "Create", new { rep = item.Id, rec = item.FromUserName })
+        </td>
+    </tr>
+}
+
+</table>

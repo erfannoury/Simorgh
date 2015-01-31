@@ -1,82 +1,82 @@
 ﻿@model Simorgh.Models.Hotel
 
 @{
-    ViewBag.Title = "Details";
+	ViewBag.Title = "Details";
 }
 
 <h2>Details</h2>
 
 <div>
-    <h4>Hotel</h4>
+	<h4>Hotel</h4>
 	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageFolderId)
-        </dt>
+	<dl class="dl-horizontal">
+		@*<dt>
+			@Html.DisplayNameFor(model => model.ImageFolderId)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ImageFolderId)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.ImageFolderId)
+		</dd>*@
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Name)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Name)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CityIdCity)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.CityId)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CityIdCity)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.CityId)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Address)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Address)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Longitude)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Longitude)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Longitude)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Longitude)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Latitude)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Latitude)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Latitude)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Latitude)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Description)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Description)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Star)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Star)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Star)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Star)
+		</dd>
 
-    </dl>
+	</dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+	@Html.ActionLink("Back to List", "Index")
 </p>

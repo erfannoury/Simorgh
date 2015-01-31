@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Simorgh.Models.Hotel>
+﻿@using System.Web.UI.HtmlControls
+@model IEnumerable<Simorgh.Models.Hotel>
 
 @{
     ViewBag.Title = "Index";
@@ -12,13 +13,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ImageFolderId)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CityIdCity)
+            @Html.DisplayNameFor(model => model.CityId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Address)
@@ -35,19 +33,23 @@
         <th>
             @Html.DisplayNameFor(model => model.Star)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomTypes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageIdList)
+        </th>
+        <th>
+        </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ImageFolderId)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CityIdCity)
+            @Html.DisplayFor(modelItem => item.CityId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Address)
@@ -65,10 +67,23 @@
             @Html.DisplayFor(modelItem => item.Star)
         </td>
         <td>
+            @foreach (var roomtype in item.RoomTypes)
+            {
+                @Html.Display(roomtype.Title)
+            }
+        </td>
+        <td>
+            @foreach (var imgid in item.ImageIdList)
+            {
+                @Html.Display(string.Format("{0}", imgid))
+                <br/>
+            }
+        </td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id }) |
-            @Html.ActionLink("Add Rating", "../rating/create", new { hotelid = item.Id })
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @*@Html.ActionLink("Add Rating", "~/Rating/Create", new { hotelid = item.Id })*@
         </td>
     </tr>
 }

@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Simorgh.Models.UserMessage>
+
+@{
+    ViewBag.Title = "Conversation";
+}
+
+<p>
+    @Html.ActionLink("Compose Message", "Create") |
+    @Html.ActionLink("Inbox", "Inbox") |
+    @Html.ActionLink("Sent Messages", "Sent")
+</p>
+@foreach (var item in Model)
+{
+    <div>
+        <div><small>@Html.DisplayFor(modelItem => item.MessageTime)</small></div>
+        <div>@Html.DisplayFor(modelItem => item.FromUserName) :</div>
+        <dl class="dl-horizontal">
+            <dd>
+                @Html.DisplayFor(modelItem => item.MessageText)
+            </dd>
+        </dl>
+        <hr />
+    </div>
+    
+}
