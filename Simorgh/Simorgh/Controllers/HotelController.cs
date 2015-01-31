@@ -26,14 +26,14 @@ namespace Simorgh.Controllers
         [HttpGet]
         public ActionResult SearchResult(string cityName)
         {
-            var hotels = from h in db.Hotels
+            var hotels = from h in context.Hotels
                          select h;
             if (!String.IsNullOrEmpty(cityName))
             {
                 int id;
                 try
                 {
-                    id = cityDb.Cities.Where(c => c.CityName.Contains(cityName)).FirstOrDefault().CityId;
+                    id = context.Cities.Where(c => c.CityName.Contains(cityName)).FirstOrDefault().CityId;
                     if (id == null)
                         throw new Exception();
                 }
