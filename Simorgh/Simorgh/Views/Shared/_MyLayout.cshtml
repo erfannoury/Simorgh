@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @RenderSection("csss", required: false)
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top supreme-container">
+        <div class="container">
+            <div class="navbar-header">
+                @Html.ActionLink("سامانه رزرواسیون سیمرغ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse pull-left">
+                @Html.Partial("_MyLoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content supreme-container">
+        @RenderBody()
+        <hr />
+    </div>
+    <footer id="footer" class="footer supreme-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    گروه نرم‌افزاری ناب - @DateTime.Now.Year &copy;
+                </div>
+                <div class="col-lg-10 social">
+                    <a href="https://plus.google.com/simorgh" class="google-plus pull-left" rel="me" target="_blank"><span class="ss-icon ss-social-circle">GooglePlus</span></a>
+                    <a href="http://www.facebook.com/simorgh" class="facebook pull-left" rel="me" target="_blank"><span class="ss-icon ss-social-circle">Facebook</span></a>
+                    <a href="http://www.twitter.com/simorgh" class="twitter pull-left" rel="me" target="_blank"><span class="ss-icon ss-social-circle">Twitter</span></a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
