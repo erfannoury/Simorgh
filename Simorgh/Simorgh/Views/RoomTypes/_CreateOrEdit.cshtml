@@ -1,0 +1,71 @@
+@model Simorgh.Models.RoomType
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ImageFolderId)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ImageFolderId)
+    @Html.ValidationMessageFor(model => model.ImageFolderId)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Title)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Title)
+    @Html.ValidationMessageFor(model => model.Title)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Description)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Description)
+    @Html.ValidationMessageFor(model => model.Description)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.RoomCapacity)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.RoomCapacity)
+    @Html.ValidationMessageFor(model => model.RoomCapacity)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.TotalCount)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.TotalCount)
+    @Html.ValidationMessageFor(model => model.TotalCount)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.VacantCount)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.VacantCount)
+    @Html.ValidationMessageFor(model => model.VacantCount)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Price)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Price)
+    @Html.ValidationMessageFor(model => model.Price)
+</div>
+
+<div class="editor-label">
+    Hotel
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.HotelId, ((IEnumerable<Simorgh.Models.Hotel>)ViewBag.PossibleHotels).Select(option => new SelectListItem {
+        Text = (option == null ? "None" : option.Name), 
+        Value = option.HotelId.ToString(),
+        Selected = (Model != null) && (option.HotelId == Model.HotelId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.HotelId)
+</div>

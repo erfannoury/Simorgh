@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.EnterpriseServices.Internal;
 using System.Linq;
 using System.Web;
 
@@ -10,10 +11,8 @@ namespace Simorgh.Models
 {
     public class RoomType
     {
-        //[Key, DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        [Key, DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int RoomTypeId { get; set; }
-
-        public int HotelId { get; set; }
 
         [Range(0, double.MaxValue, ErrorMessage = "The value must be greater than 0")]
         public int ImageFolderId { get; set; }
@@ -35,6 +34,13 @@ namespace Simorgh.Models
 
         [Range(0, double.MaxValue, ErrorMessage = "The value must be at least 0")]
         public int Price { get; set; }
+
+
+        public int HotelId { get; set; }
+
+        public virtual Hotel RoomTypeHotel { get; set; }
+
+        public virtual ICollection<ImageFile> RoomTypeImageFiles { get; set; } 
 
     }
 

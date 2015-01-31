@@ -1,0 +1,47 @@
+@model Simorgh.Models.RoomType
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>RoomType</legend>
+
+    <div class="display-label">ImageFolderId</div>
+    <div class="display-field">@Model.ImageFolderId</div>
+
+    <div class="display-label">Title</div>
+    <div class="display-field">@Model.Title</div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">@Model.Description</div>
+
+    <div class="display-label">RoomCapacity</div>
+    <div class="display-field">@Model.RoomCapacity</div>
+
+    <div class="display-label">TotalCount</div>
+    <div class="display-field">@Model.TotalCount</div>
+
+    <div class="display-label">VacantCount</div>
+    <div class="display-field">@Model.VacantCount</div>
+
+    <div class="display-label">Price</div>
+    <div class="display-field">@Model.Price</div>
+
+    <div class="display-label">RoomTypeHotel</div>
+    <div class="display-field">@(Model.RoomTypeHotel == null ? "None" : Model.RoomTypeHotel.Name)</div>
+
+    <div class="display-label">RoomTypeImageFiles</div>
+    <div class="display-field">@(Model.RoomTypeImageFiles == null ? "None" : Model.RoomTypeImageFiles.Count.ToString())</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

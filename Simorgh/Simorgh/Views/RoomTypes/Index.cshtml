@@ -1,0 +1,83 @@
+@model IEnumerable<Simorgh.Models.RoomType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            ImageFolderId
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            RoomCapacity
+        </th>
+        <th>
+            TotalCount
+        </th>
+        <th>
+            VacantCount
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            RoomTypeHotel
+        </th>
+        <th>
+            RoomTypeImageFiles
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RoomTypeId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RoomTypeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RoomTypeId })
+        </td>
+        <td>
+			@item.ImageFolderId
+        </td>
+        <td>
+			@item.Title
+        </td>
+        <td>
+			@item.Description
+        </td>
+        <td>
+			@item.RoomCapacity
+        </td>
+        <td>
+			@item.TotalCount
+        </td>
+        <td>
+			@item.VacantCount
+        </td>
+        <td>
+			@item.Price
+        </td>
+        <td>
+			@(item.RoomTypeHotel == null ? "None" : item.RoomTypeHotel.Name)
+        </td>
+        <td>
+			@(item.RoomTypeImageFiles == null ? "None" : item.RoomTypeImageFiles.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+
