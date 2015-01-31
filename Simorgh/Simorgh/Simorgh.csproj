@@ -206,19 +206,28 @@
     <Compile Include="Models\Hotel.cs">
       <DependentUpon>Simorgh.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ImageFile.cs">
+      <DependentUpon>Simorgh.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Message.cs">
+      <DependentUpon>Simorgh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rating.cs">
+      <DependentUpon>Simorgh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reservation.cs">
       <DependentUpon>Simorgh.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ReservationItemModels.cs" />
     <Compile Include="Models\ReservationModels.cs" />
     <Compile Include="Models\HotelModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ImageFile.cs">
-      <DependentUpon>Simorgh.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RatingModels.cs" />
     <Compile Include="Models\RoleViewModels.cs" />
+    <Compile Include="Models\RoomReview.cs">
+      <DependentUpon>Simorgh.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RoomType.cs">
       <DependentUpon>Simorgh.tt</DependentUpon>
     </Compile>
