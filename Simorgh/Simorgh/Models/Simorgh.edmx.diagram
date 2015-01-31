@@ -35,8 +35,8 @@
         <EntityTypeShape EntityType="Simorgh.Model.RoomReview" Width="2.75" PointX="17.125" PointY="8.125" />
         <AssociationConnector Association="Simorgh.Model.FK_Rating_PK_Hotel" ManuallyRouted="true" >
           <ConnectorPoint PointX="14.2499975" PointY="8.125" />
-          <ConnectorPoint PointX="14.2499975" PointY="4.5589273663361869" />
-          <ConnectorPoint PointX="15" PointY="4.5589273663361869" />
+          <ConnectorPoint PointX="14.2499975" PointY="4.6849043007277569" />
+          <ConnectorPoint PointX="15" PointY="4.6849043007277569" />
         </AssociationConnector>
         <AssociationConnector Association="Simorgh.Model.FK_Rating_PK_AspNetUser" />
         <AssociationConnector Association="Simorgh.Model.AspNetUserRoomReview" />

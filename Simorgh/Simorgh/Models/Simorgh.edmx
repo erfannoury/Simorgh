@@ -11,6 +11,14 @@
     <EntitySet Name="AspNetUserLogins" EntityType="Simorgh.Model.Store.AspNetUserLogins" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="AspNetUserRoles" EntityType="Simorgh.Model.Store.AspNetUserRoles" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="AspNetUsers" EntityType="Simorgh.Model.Store.AspNetUsers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Hotels" EntityType="Simorgh.Model.Store.Hotels" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ImageFiles" EntityType="Simorgh.Model.Store.ImageFiles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RoomTypes" EntityType="Simorgh.Model.Store.RoomTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cities" EntityType="Simorgh.Model.Store.Cities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Messages" EntityType="Simorgh.Model.Store.Messages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Reservations" EntityType="Simorgh.Model.Store.Reservations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ratings" EntityType="Simorgh.Model.Store.Ratings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RoomReviews" EntityType="Simorgh.Model.Store.RoomReviews" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_Role_Id" Association="Simorgh.Model.Store.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_Role_Id">
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
@@ -34,6 +42,58 @@
     <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Simorgh.Model.Store.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="ImageFileHotel" Association="Simorgh.Model.Store.ImageFileHotel">
+      <End Role="ImageFile" EntitySet="ImageFiles" />
+      <End Role="Hotel" EntitySet="Hotels" />
+    </AssociationSet>
+    <AssociationSet Name="RoomTypeHotel" Association="Simorgh.Model.Store.RoomTypeHotel">
+      <End Role="RoomType" EntitySet="RoomTypes" />
+      <End Role="Hotel" EntitySet="Hotels" />
+    </AssociationSet>
+    <AssociationSet Name="RoomTypeImageFile" Association="Simorgh.Model.Store.RoomTypeImageFile">
+      <End Role="RoomType" EntitySet="RoomTypes" />
+      <End Role="ImageFile" EntitySet="ImageFiles" />
+    </AssociationSet>
+    <AssociationSet Name="CityHotel" Association="Simorgh.Model.Store.FK_HOTEL_PK_CITY">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Hotel" EntitySet="Hotels" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserReservation" Association="Simorgh.Model.Store.AspNetUserReservation">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserMessage" Association="Simorgh.Model.Store.FK_ToUserID_PK_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserMessage1" Association="Simorgh.Model.Store.FK_FromUserID_PK_UserID">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="RoomTypeReservation" Association="Simorgh.Model.Store.PK_RoomType_FK_Reservation">
+      <End Role="RoomType" EntitySet="RoomTypes" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="RatingHotel" Association="Simorgh.Model.Store.FK_Rating_PK_Hotel">
+      <End Role="Rating" EntitySet="Ratings" />
+      <End Role="Hotel" EntitySet="Hotels" />
+    </AssociationSet>
+    <AssociationSet Name="RatingAspNetUser" Association="Simorgh.Model.Store.FK_Rating_PK_AspNetUser">
+      <End Role="Rating" EntitySet="Ratings" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoomReview" Association="Simorgh.Model.Store.AspNetUserRoomReview">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="RoomReview" EntitySet="RoomReviews" />
+    </AssociationSet>
+    <AssociationSet Name="RoomTypeRoomReview" Association="Simorgh.Model.Store.RoomTypeRoomReview">
+      <End Role="RoomType" EntitySet="RoomTypes" />
+      <End Role="RoomReview" EntitySet="RoomReviews" />
+    </AssociationSet>
+    <AssociationSet Name="MessageMessage" Association="Simorgh.Model.Store.MessageMessage">
+      <End Role="Message" EntitySet="Messages" />
+      <End Role="ReplyToMessage" EntitySet="Messages" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="AspNetRoles">
@@ -93,7 +153,104 @@
     <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
     <Property Name="AccessFailedCount" Type="int" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
-    <Property Name="BirthDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BirthDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Hotels">
+    <Key>
+      <PropertyRef Name="HotelId" />
+    </Key>
+    <Property Name="HotelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HotelName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Longtitude" Type="bigint" Nullable="false" />
+    <Property Name="Latitude" Type="bigint" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Star" Type="tinyint" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="ServerURL" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ImageFiles">
+    <Key>
+      <PropertyRef Name="ImageFileId" />
+    </Key>
+    <Property Name="ImageFileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RoomTypeId" Type="int" Nullable="false" />
+    <Property Name="HotelId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RoomTypes">
+    <Key>
+      <PropertyRef Name="RoomTypeId" />
+    </Key>
+    <Property Name="RoomTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoomTypeName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RoomTypeDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RoomCapacity" Type="int" Nullable="false" />
+    <Property Name="Price" Type="bigint" Nullable="false" />
+    <Property Name="HotelId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="MessageId" />
+    </Key>
+    <Property Name="MessageId" Type="nvarchar" StoreGeneratedPattern="Identity" Nullable="false" MaxLength="128" />
+    <Property Name="FromUserId" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="ToUserId" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="MessageText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MessageTime" Type="datetime" Nullable="false" />
+    <Property Name="IsRead" Type="bit" Nullable="false" />
+    <Property Name="ReplyToMessageId" Type="nvarchar" Nullable="true" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="Reservations">
+    <Key>
+      <PropertyRef Name="ReservationTime" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoomTypeId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="RoomTypeId" Type="int" Nullable="false" />
+    <Property Name="ReservationTime" Type="datetime" Nullable="false" />
+    <Property Name="CheckInTime" Type="datetime" Nullable="false" />
+    <Property Name="CheckOutTime" Type="datetime" Nullable="false" />
+    <Property Name="AdultsCount" Type="tinyint" Nullable="false" />
+    <Property Name="InfantsCount" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ratings">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="HotelId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="HotelId" Type="int" Nullable="false" />
+    <Property Name="StaffBavior" Type="tinyint" Nullable="false" />
+    <Property Name="RoomCleanliness" Type="tinyint" Nullable="false" />
+    <Property Name="OutdoorCleanliness" Type="tinyint" Nullable="false" />
+    <Property Name="Prestige" Type="tinyint" Nullable="false" />
+    <Property Name="FoodQuality" Type="tinyint" Nullable="false" />
+    <Property Name="EnvironmentQuality" Type="tinyint" Nullable="false" />
+    <Property Name="PriceQualityRatio" Type="tinyint" Nullable="false" />
+    <Property Name="Overal" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RoomReviews">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoomTypeId" />
+      <PropertyRef Name="ReviewTimestap" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="RoomTypeId" Type="int" Nullable="false" />
+    <Property Name="ReviewTimestap" Type="datetime" Nullable="false" />
+    <Property Name="Review" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UpVotes" Type="int" Nullable="false" />
+    <Property Name="DownVotes" Type="int" Nullable="false" />
+    <Property Name="IsConfirmed" Type="bit" Nullable="false" />
   </EntityType>
   <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_Role_Id">
     <End Role="AspNetRoles" Type="Simorgh.Model.Store.AspNetRoles" Multiplicity="0..1" />
@@ -172,6 +329,162 @@
       </Principal>
       <Dependent Role="AspNetUserRoles">
         <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ImageFileHotel">
+    <End Role="ImageFile" Type="Simorgh.Model.Store.ImageFiles" Multiplicity="*" />
+    <End Role="Hotel" Type="Simorgh.Model.Store.Hotels" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Hotel">
+        <PropertyRef Name="HotelId" />
+      </Principal>
+      <Dependent Role="ImageFile">
+        <PropertyRef Name="HotelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoomTypeHotel">
+    <End Role="RoomType" Type="Simorgh.Model.Store.RoomTypes" Multiplicity="*" />
+    <End Role="Hotel" Type="Simorgh.Model.Store.Hotels" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Hotel">
+        <PropertyRef Name="HotelId" />
+      </Principal>
+      <Dependent Role="RoomType">
+        <PropertyRef Name="HotelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoomTypeImageFile">
+    <End Role="RoomType" Type="Simorgh.Model.Store.RoomTypes" Multiplicity="1" />
+    <End Role="ImageFile" Type="Simorgh.Model.Store.ImageFiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomType">
+        <PropertyRef Name="RoomTypeId" />
+      </Principal>
+      <Dependent Role="ImageFile">
+        <PropertyRef Name="RoomTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HOTEL_PK_CITY">
+    <End Role="City" Type="Simorgh.Model.Store.Cities" Multiplicity="1" />
+    <End Role="Hotel" Type="Simorgh.Model.Store.Hotels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Hotel">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserReservation">
+    <End Role="AspNetUser" Type="Simorgh.Model.Store.AspNetUsers" Multiplicity="1" />
+    <End Role="Reservation" Type="Simorgh.Model.Store.Reservations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ToUserID_PK_UserId">
+    <End Role="AspNetUser" Type="Simorgh.Model.Store.AspNetUsers" Multiplicity="1" />
+    <End Role="Message" Type="Simorgh.Model.Store.Messages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="ToUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FromUserID_PK_UserID">
+    <End Role="AspNetUser" Type="Simorgh.Model.Store.AspNetUsers" Multiplicity="1" />
+    <End Role="Message" Type="Simorgh.Model.Store.Messages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="FromUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_RoomType_FK_Reservation">
+    <End Role="RoomType" Type="Simorgh.Model.Store.RoomTypes" Multiplicity="1" />
+    <End Role="Reservation" Type="Simorgh.Model.Store.Reservations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomType">
+        <PropertyRef Name="RoomTypeId" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="RoomTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rating_PK_Hotel">
+    <End Role="Rating" Type="Simorgh.Model.Store.Ratings" Multiplicity="*" />
+    <End Role="Hotel" Type="Simorgh.Model.Store.Hotels" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Hotel">
+        <PropertyRef Name="HotelId" />
+      </Principal>
+      <Dependent Role="Rating">
+        <PropertyRef Name="HotelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rating_PK_AspNetUser">
+    <End Role="Rating" Type="Simorgh.Model.Store.Ratings" Multiplicity="*" />
+    <End Role="AspNetUser" Type="Simorgh.Model.Store.AspNetUsers" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rating">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoomReview">
+    <End Role="AspNetUser" Type="Simorgh.Model.Store.AspNetUsers" Multiplicity="1" />
+    <End Role="RoomReview" Type="Simorgh.Model.Store.RoomReviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoomReview">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoomTypeRoomReview">
+    <End Role="RoomType" Type="Simorgh.Model.Store.RoomTypes" Multiplicity="1" />
+    <End Role="RoomReview" Type="Simorgh.Model.Store.RoomReviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomType">
+        <PropertyRef Name="RoomTypeId" />
+      </Principal>
+      <Dependent Role="RoomReview">
+        <PropertyRef Name="RoomTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MessageMessage">
+    <End Role="Message" Type="Simorgh.Model.Store.Messages" Multiplicity="*" />
+    <End Role="ReplyToMessage" Type="Simorgh.Model.Store.Messages" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ReplyToMessage">
+        <PropertyRef Name="MessageId" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="ReplyToMessageId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -442,6 +755,7 @@
           <NavigationProperty Name="City" Relationship="Simorgh.Model.FK_HOTEL_PK_CITY" FromRole="Hotel" ToRole="City" />
           <NavigationProperty Name="Rating" Relationship="Simorgh.Model.FK_Rating_PK_Hotel" FromRole="Hotel" ToRole="Rating" />
           <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="ServerURL" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="ImageFile">
           <Key>
@@ -529,15 +843,15 @@
           <Key>
             <PropertyRef Name="MessageId" />
           </Key>
-          <Property Name="MessageId" Type="String" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FromUserId" Type="String" Nullable="false" />
-          <Property Name="ToUserId" Type="String" Nullable="false" />
+          <Property Name="MessageId" Type="String" Nullable="false" annotation:StoreGeneratedPattern="Identity" FixedLength="false" MaxLength="128" Unicode="true" />
+          <Property Name="FromUserId" Type="String" Nullable="false" FixedLength="false" MaxLength="128" Unicode="true" />
+          <Property Name="ToUserId" Type="String" Nullable="false" FixedLength="false" MaxLength="128" Unicode="true" />
           <Property Name="MessageText" Type="String" Nullable="false" />
           <Property Name="MessageTime" Type="DateTime" Nullable="false" />
           <Property Name="IsRead" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="FromUser" Relationship="Simorgh.Model.FK_ToUserID_PK_UserId" FromRole="Message" ToRole="AspNetUser" />
           <NavigationProperty Name="ToUser" Relationship="Simorgh.Model.FK_FromUserID_PK_UserID" FromRole="Message" ToRole="AspNetUser" />
-          <Property Name="ReplyToMessageId" Type="String" Nullable="true" />
+          <Property Name="ReplyToMessageId" Type="String" Nullable="true" FixedLength="false" MaxLength="128" Unicode="true" />
           <NavigationProperty Name="Messages" Relationship="Simorgh.Model.MessageMessage" FromRole="Message" ToRole="ReplyToMessage" />
           <NavigationProperty Name="ReplyToMessage" Relationship="Simorgh.Model.MessageMessage" FromRole="ReplyToMessage" ToRole="Message" />
         </EntityType>
@@ -548,7 +862,7 @@
             <PropertyRef Name="RoomTypeId" />
           </Key>
           <NavigationProperty Name="AspNetUser" Relationship="Simorgh.Model.AspNetUserReservation" FromRole="Reservation" ToRole="AspNetUser" />
-          <Property Name="UserId" Type="String" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="RoomTypeId" Type="Int32" Nullable="false" />
           <Property Name="ReservationTime" Type="DateTime" Nullable="false" />
           <Property Name="CheckInTime" Type="DateTime" Nullable="false" />
@@ -610,7 +924,7 @@
             <PropertyRef Name="UserId" />
             <PropertyRef Name="HotelId" />
           </Key>
-          <Property Name="UserId" Type="String" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" FixedLength="false" MaxLength="128" Unicode="true" />
           <Property Name="HotelId" Type="Int32" Nullable="false" />
           <Property Name="StaffBavior" Type="Byte" Nullable="false" />
           <Property Name="RoomCleanliness" Type="Byte" Nullable="false" />
@@ -629,7 +943,7 @@
             <PropertyRef Name="RoomTypeId" />
             <PropertyRef Name="ReviewTimestap" />
           </Key>
-          <Property Name="UserId" Type="String" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" FixedLength="false" MaxLength="128" Unicode="true" />
           <Property Name="RoomTypeId" Type="Int32" Nullable="false" />
           <Property Name="ReviewTimestap" Type="DateTime" Nullable="false" />
           <Property Name="Review" Type="String" Nullable="false" />
@@ -763,6 +1077,106 @@
           <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hotels">
+      <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.Hotel)">
+        <MappingFragment StoreEntitySet="Hotels">
+          <ScalarProperty Name="HotelId" ColumnName="HotelId" />
+          <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Longtitude" ColumnName="Longtitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Star" ColumnName="Star" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="ServerURL" ColumnName="ServerURL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImageFiles">
+      <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.ImageFile)">
+        <MappingFragment StoreEntitySet="ImageFiles">
+          <ScalarProperty Name="ImageFileId" ColumnName="ImageFileId" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+          <ScalarProperty Name="HotelId" ColumnName="HotelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.RoomType)">
+        <MappingFragment StoreEntitySet="RoomTypes">
+          <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+          <ScalarProperty Name="RoomTypeName" ColumnName="RoomTypeName" />
+          <ScalarProperty Name="RoomTypeDescription" ColumnName="RoomTypeDescription" />
+          <ScalarProperty Name="RoomCapacity" ColumnName="RoomCapacity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="HotelId" ColumnName="HotelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.City)">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.Message)">
+        <MappingFragment StoreEntitySet="Messages">
+          <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+          <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+          <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+          <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+          <ScalarProperty Name="MessageTime" ColumnName="MessageTime" />
+          <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+          <ScalarProperty Name="ReplyToMessageId" ColumnName="ReplyToMessageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.Reservation)">
+        <MappingFragment StoreEntitySet="Reservations">
+          <ScalarProperty Name="ReservationTime" ColumnName="ReservationTime" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+          <ScalarProperty Name="CheckInTime" ColumnName="CheckInTime" />
+          <ScalarProperty Name="CheckOutTime" ColumnName="CheckOutTime" />
+          <ScalarProperty Name="AdultsCount" ColumnName="AdultsCount" />
+          <ScalarProperty Name="InfantsCount" ColumnName="InfantsCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ratings">
+      <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.Rating)">
+        <MappingFragment StoreEntitySet="Ratings">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="HotelId" ColumnName="HotelId" />
+          <ScalarProperty Name="StaffBavior" ColumnName="StaffBavior" />
+          <ScalarProperty Name="RoomCleanliness" ColumnName="RoomCleanliness" />
+          <ScalarProperty Name="OutdoorCleanliness" ColumnName="OutdoorCleanliness" />
+          <ScalarProperty Name="Prestige" ColumnName="Prestige" />
+          <ScalarProperty Name="FoodQuality" ColumnName="FoodQuality" />
+          <ScalarProperty Name="EnvironmentQuality" ColumnName="EnvironmentQuality" />
+          <ScalarProperty Name="PriceQualityRatio" ColumnName="PriceQualityRatio" />
+          <ScalarProperty Name="Overal" ColumnName="Overal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomReviews">
+      <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.RoomReview)">
+        <MappingFragment StoreEntitySet="RoomReviews">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+          <ScalarProperty Name="ReviewTimestap" ColumnName="ReviewTimestap" />
+          <ScalarProperty Name="Review" ColumnName="Review" />
+          <ScalarProperty Name="UpVotes" ColumnName="UpVotes" />
+          <ScalarProperty Name="DownVotes" ColumnName="DownVotes" />
+          <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -29,6 +29,7 @@ namespace Simorgh.Models
         public string Description { get; set; }
         public byte Star { get; set; }
         public int CityId { get; set; }
+        public string ServerURL { get; set; }
     
         public virtual ICollection<ImageFile> ImageFile { get; set; }
         public virtual ICollection<RoomType> RoomType { get; set; }
