@@ -29,7 +29,12 @@
         <div class="form-group">
             <div class="control-label col-md-2">To</div>
             <div class="col-md-10">
-                @if (repval == 0)
+                @if(!User.IsInRole("Admin"))
+                {
+                   @Html.EditorFor(model => model.ToUserName,
+                   new { htmlAttributes = new { @Value = "support", @readonly = "readonly" } })                                        
+                }
+                else if (repval == 0)
                 {
                    @Html.EditorFor(model => model.ToUserName)                    
                 }
