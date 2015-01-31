@@ -163,14 +163,17 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Context\ApplicationDbContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\DesignTestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
+    <Compile Include="Controllers\ImageFilesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\RoomReviewController.cs" />
     <Compile Include="Controllers\RoomTypeController.cs" />
+    <Compile Include="Controllers\RoomTypesController.cs" />
     <Compile Include="Controllers\UserMessagesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -182,11 +185,13 @@
     <Compile Include="Models\ReservationModels.cs" />
     <Compile Include="Models\HotelModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImageFile.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RatingModels.cs" />
     <Compile Include="Models\RoleViewModels.cs" />
     <Compile Include="Models\RoomTypeModels.cs" />
     <Compile Include="Models\RoomReviewModels.cs" />
+    <Compile Include="Models\SimorghContext.cs" />
     <Compile Include="Models\UserMessageModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -403,6 +408,24 @@
     <Content Include="Views\Hotel\SearchResult.cshtml" />
     <Content Include="Views\Manage\AddCredit.cshtml" />
     <Content Include="Views\Manage\ChangeMobile.cshtml" />
+    <Content Include="Views\Cities\Create.cshtml" />
+    <Content Include="Views\Cities\Edit.cshtml" />
+    <Content Include="Views\Cities\Delete.cshtml" />
+    <Content Include="Views\Cities\Details.cshtml" />
+    <Content Include="Views\Cities\Index.cshtml" />
+    <Content Include="Views\Cities\_CreateOrEdit.cshtml" />
+    <Content Include="Views\RoomTypes\Create.cshtml" />
+    <Content Include="Views\RoomTypes\Edit.cshtml" />
+    <Content Include="Views\RoomTypes\Delete.cshtml" />
+    <Content Include="Views\RoomTypes\Details.cshtml" />
+    <Content Include="Views\RoomTypes\Index.cshtml" />
+    <Content Include="Views\RoomTypes\_CreateOrEdit.cshtml" />
+    <Content Include="Views\ImageFiles\Create.cshtml" />
+    <Content Include="Views\ImageFiles\Edit.cshtml" />
+    <Content Include="Views\ImageFiles\Delete.cshtml" />
+    <Content Include="Views\ImageFiles\Details.cshtml" />
+    <Content Include="Views\ImageFiles\Index.cshtml" />
+    <Content Include="Views\ImageFiles\_CreateOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
