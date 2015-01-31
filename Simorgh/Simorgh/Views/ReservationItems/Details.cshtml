@@ -1,0 +1,26 @@
+@model Simorgh.Models.ReservationItem
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ReservationItem</legend>
+
+    <div class="display-label">Reservation</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.Reservation).ToString()</div>
+
+    <div class="display-label">RoomType</div>
+    <div class="display-field">@(Model.RoomType == null ? "None" : Model.RoomType.Title)</div>
+
+    <div class="display-label">Hotel</div>
+    <div class="display-field">@(Model.Hotel == null ? "None" : Model.Hotel.Name)</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ReservationItemId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

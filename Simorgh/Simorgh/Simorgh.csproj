@@ -182,6 +182,7 @@
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationUserRole.cs" />
     <Compile Include="Models\City.cs" />
+    <Compile Include="Models\ReservationItemModels.cs" />
     <Compile Include="Models\ReservationModels.cs" />
     <Compile Include="Models\HotelModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />

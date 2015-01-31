@@ -1,0 +1,32 @@
+@model Simorgh.Models.Reservation
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Reservation</legend>
+
+    <div class="display-label">CheckInTime</div>
+    <div class="display-field">@String.Format("{0:g}", Model.CheckInTime)</div>
+
+    <div class="display-label">CheckOutTime</div>
+    <div class="display-field">@String.Format("{0:g}", Model.CheckOutTime)</div>
+
+    <div class="display-label">ApplicationUser</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.ApplicationUser).ToString()</div>
+
+    <div class="display-label">ReservationItems</div>
+    <div class="display-field">@(Model.ReservationItems == null ? "None" : Model.ReservationItems.Count.ToString())</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

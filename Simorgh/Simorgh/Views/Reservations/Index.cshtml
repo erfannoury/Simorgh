@@ -1,0 +1,53 @@
+@model IEnumerable<Simorgh.Models.Reservation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            CheckInTime
+        </th>
+        <th>
+            CheckOutTime
+        </th>
+        <th>
+            ApplicationUser
+        </th>
+        <th>
+            ReservationItems
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ReservationId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ReservationId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ReservationId })
+        </td>
+        <td>
+			@String.Format("{0:g}", item.CheckInTime)
+        </td>
+        <td>
+			@String.Format("{0:g}", item.CheckOutTime)
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.ApplicationUser).ToString()
+        </td>
+        <td>
+			@(item.ReservationItems == null ? "None" : item.ReservationItems.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+
