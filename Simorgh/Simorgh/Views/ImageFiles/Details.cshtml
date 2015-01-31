@@ -1,0 +1,26 @@
+@model Simorgh.Models.ImageFile
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ImageFile</legend>
+
+    <div class="display-label">ImageFileLocation</div>
+    <div class="display-field">@Model.ImageFileLocation</div>
+
+    <div class="display-label">ImageFileHotel</div>
+    <div class="display-field">@(Model.ImageFileHotel == null ? "None" : Model.ImageFileHotel.Name)</div>
+
+    <div class="display-label">ImageFileRoomType</div>
+    <div class="display-field">@(Model.ImageFileRoomType == null ? "None" : Model.ImageFileRoomType.Title)</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ImageFileId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

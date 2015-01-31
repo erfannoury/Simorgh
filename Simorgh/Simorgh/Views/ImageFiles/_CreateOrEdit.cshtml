@@ -1,0 +1,34 @@
+@model Simorgh.Models.ImageFile
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ImageFileLocation)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ImageFileLocation)
+    @Html.ValidationMessageFor(model => model.ImageFileLocation)
+</div>
+
+<div class="editor-label">
+    Hotel
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.HotelId, ((IEnumerable<Simorgh.Models.Hotel>)ViewBag.PossibleHotels).Select(option => new SelectListItem {
+        Text = (option == null ? "None" : option.Name), 
+        Value = option.HotelId.ToString(),
+        Selected = (Model != null) && (option.HotelId == Model.HotelId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.HotelId)
+</div>
+<div class="editor-label">
+    RoomType
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.RoomTypeId, ((IEnumerable<Simorgh.Models.RoomType>)ViewBag.PossibleRoomTypes).Select(option => new SelectListItem {
+        Text = (option == null ? "None" : option.Title), 
+        Value = option.RoomTypeId.ToString(),
+        Selected = (Model != null) && (option.RoomTypeId == Model.RoomTypeId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.RoomTypeId)
+</div>

@@ -1,0 +1,47 @@
+@model IEnumerable<Simorgh.Models.ImageFile>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            ImageFileLocation
+        </th>
+        <th>
+            ImageFileHotel
+        </th>
+        <th>
+            ImageFileRoomType
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ImageFileId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ImageFileId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ImageFileId })
+        </td>
+        <td>
+			@item.ImageFileLocation
+        </td>
+        <td>
+			@(item.ImageFileHotel == null ? "None" : item.ImageFileHotel.Name)
+        </td>
+        <td>
+			@(item.ImageFileRoomType == null ? "None" : item.ImageFileRoomType.Title)
+        </td>
+    </tr>
+}
+
+</table>
+
+
