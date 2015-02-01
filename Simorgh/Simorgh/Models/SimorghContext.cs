@@ -28,5 +28,11 @@ namespace Simorgh.Models
         public DbSet<Simorgh.Models.Reservation> Reservations { get; set; }
 
         public DbSet<Simorgh.Models.ReservationItem> ReservationItems { get; set; }
+
+        public DbSet<Simorgh.Models.Message> Messages { get; set; }
+
+        public DbSet<Simorgh.Models.Rating> Ratings { get; set; }
+
+        public DbSet<Simorgh.Models.RoomReview> RoomReviews { get; set; }
     }
 }
