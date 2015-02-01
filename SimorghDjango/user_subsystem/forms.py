@@ -15,7 +15,7 @@ class UserForm(ModelForm):
 class AccountForm(ModelForm):
     class Meta:
         model = Account
-        exclude = ['user']
+        exclude = ['user', 'type']
 
 class UserEditForm(ModelForm):
     def __init__(self, *args, **kwargs):
