@@ -23,7 +23,6 @@ namespace Simorgh.Models
         public Nullable<int> DownVotes { get; set; }
         public Nullable<bool> IsConfirmed { get; set; }
     
-        public virtual AspNetUser AspNetUser { get; set; }
         public virtual RoomType RoomType { get; set; }
     }
 }

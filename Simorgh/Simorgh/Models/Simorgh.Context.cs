@@ -25,11 +25,6 @@ namespace Simorgh.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
-        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Hotel> Hotels { get; set; }
         public virtual DbSet<ImageFile> ImageFiles { get; set; }
         public virtual DbSet<RoomType> RoomTypes { get; set; }
@@ -38,5 +33,6 @@ namespace Simorgh.Models
         public virtual DbSet<Reservation> Reservations { get; set; }
         public virtual DbSet<Rating> Ratings { get; set; }
         public virtual DbSet<RoomReview> RoomReviews { get; set; }
+        public virtual DbSet<FuckAspUser> FuckAspUsers { get; set; }
     }
 }

@@ -189,22 +189,10 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationUserRole.cs" />
-    <Compile Include="Models\AspNetRole.cs">
-      <DependentUpon>Simorgh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>Simorgh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserClaim.cs">
-      <DependentUpon>Simorgh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserLogin.cs">
-      <DependentUpon>Simorgh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserRole.cs">
-      <DependentUpon>Simorgh.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\City.cs">
+      <DependentUpon>Simorgh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FuckAspUser.cs">
       <DependentUpon>Simorgh.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel.cs">

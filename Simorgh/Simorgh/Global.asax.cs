@@ -21,6 +21,7 @@ namespace Simorgh
 #if DEBUG
             Database.SetInitializer<ApplicationDbContext>(new ApplicationDbContext.DropCreateAlwaysInitializer());
 #endif
+            System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<Simorgh.Models.SimorghContext>());
         }
     }
 }

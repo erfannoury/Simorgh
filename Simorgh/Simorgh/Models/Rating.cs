@@ -27,6 +27,6 @@ namespace Simorgh.Models
         public Nullable<byte> Overal { get; set; }
     
         public virtual Hotel Hotels { get; set; }
-        public virtual AspNetUser AspNetUsers { get; set; }
+        public virtual FuckAspUser FuckAspUser { get; set; }
     }
 }

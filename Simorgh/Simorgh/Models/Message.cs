@@ -27,9 +27,9 @@ namespace Simorgh.Models
         public Nullable<bool> IsRead { get; set; }
         public string ReplyToMessageId { get; set; }
     
-        public virtual AspNetUser FromUser { get; set; }
-        public virtual AspNetUser ToUser { get; set; }
         public virtual Message Messages { get; set; }
         public virtual ICollection<Message> ReplyToMessage { get; set; }
+        public virtual FuckAspUser FuckAspUser { get; set; }
+        public virtual FuckAspUser FuckAspUser1 { get; set; }
     }
 }

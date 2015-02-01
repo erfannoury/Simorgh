@@ -5,17 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2c926a69fd974d74a1362479934f1975" Name="Diagram1" ZoomLevel="94" DisplayType="true">
-        <EntityTypeShape EntityType="Simorgh.Model.AspNetRole" Width="1.5" PointX="4.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Simorgh.Model.AspNetUserClaim" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Simorgh.Model.AspNetUserLogin" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Simorgh.Model.AspNetUserRole" Width="1.5" PointX="6" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Simorgh.Model.AspNetUser" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
-        <AssociationConnector Association="Simorgh.Model.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_Role_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Simorgh.Model.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" ManuallyRouted="false" />
-        <AssociationConnector Association="Simorgh.Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="Simorgh.Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="Simorgh.Model.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_ApplicationUser_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Simorgh.Model.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Simorgh.Model.Hotel" Width="1.625" PointX="15" PointY="2.375" />
         <EntityTypeShape EntityType="Simorgh.Model.ImageFile" Width="2.25" PointX="18.5" PointY="0.5" />
         <AssociationConnector Association="Simorgh.Model.ImageFileHotel" />
@@ -26,22 +15,21 @@
         <AssociationConnector Association="Simorgh.Model.FK_HOTEL_PK_CITY" />
         <EntityTypeShape EntityType="Simorgh.Model.Message" Width="3" PointX="1.875" PointY="11.25" />
         <EntityTypeShape EntityType="Simorgh.Model.Reservation" Width="2.375" PointX="8.25" PointY="10.125" IsExpanded="true" />
-        <AssociationConnector Association="Simorgh.Model.AspNetUserReservation" ManuallyRouted="false" >
-        </AssociationConnector>
-        <AssociationConnector Association="Simorgh.Model.FK_ToUserID_PK_UserId" />
-        <AssociationConnector Association="Simorgh.Model.FK_FromUserID_PK_UserID" />
         <AssociationConnector Association="Simorgh.Model.PK_RoomType_FK_Reservation" />
         <EntityTypeShape EntityType="Simorgh.Model.Rating" Width="2.25" PointX="12.875" PointY="8.125" />
         <EntityTypeShape EntityType="Simorgh.Model.RoomReview" Width="2.75" PointX="17.125" PointY="8.125" />
         <AssociationConnector Association="Simorgh.Model.FK_Rating_PK_Hotel" ManuallyRouted="true" >
           <ConnectorPoint PointX="14.2499975" PointY="8.125" />
-          <ConnectorPoint PointX="14.2499975" PointY="4.6535095937053361" />
-          <ConnectorPoint PointX="15" PointY="4.6535095937053361" />
+          <ConnectorPoint PointX="14.2499975" PointY="4.6989957682291665" />
+          <ConnectorPoint PointX="15" PointY="4.6989957682291665" />
         </AssociationConnector>
-        <AssociationConnector Association="Simorgh.Model.FK_Rating_PK_AspNetUser" />
-        <AssociationConnector Association="Simorgh.Model.AspNetUserRoomReview" />
         <AssociationConnector Association="Simorgh.Model.RoomTypeRoomReview" />
         <AssociationConnector Association="Simorgh.Model.MessageMessage" />
+        <EntityTypeShape EntityType="Simorgh.Model.FuckAspUser" Width="1.5" PointX="4.875" PointY="9.25" />
+        <AssociationConnector Association="Simorgh.Model.FuckAspUserReservation" />
+        <AssociationConnector Association="Simorgh.Model.FuckAspUserRating" />
+        <AssociationConnector Association="Simorgh.Model.FuckAspUserMessage" />
+        <AssociationConnector Association="Simorgh.Model.FuckAspUserMessage1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

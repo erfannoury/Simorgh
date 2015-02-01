@@ -23,7 +23,7 @@ namespace Simorgh.Models
         public Nullable<byte> AdultsCount { get; set; }
         public Nullable<byte> InfantsCount { get; set; }
     
-        public virtual AspNetUser AspNetUser { get; set; }
         public virtual RoomType RoomType { get; set; }
+        public virtual FuckAspUser FuckAspUser { get; set; }
     }
 }
