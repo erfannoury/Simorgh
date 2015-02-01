@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<table>
+    {% if notfound %}
+        نتیجه‌ای یافت نشد.
+        {% else %}
+        fuck
+    {% endif %}
+
+    {% for hotel in hotels %}
+    <tr>
+        <td>
+            {{ hotel.name }}
+        </td>
+        <td>
+            {{ hotel.images.all }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

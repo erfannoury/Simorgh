@@ -1,20 +1,16 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% block content %}
 <div class="container">
     <div class="row">
-            <!--SearchBox-->
-            <div class="col-xs-12  site-header-item col-sm-3 col-sm-pull-3" id="search-box">
-                <form class="form-inline" role="form" onSubmit="return false;">
+        <div class="col-lg-12">
+            <form action="{% url 'customer:search' %}" method="get">
+                <input class="form-control" name="q"/>
+                <input class="form-control btn-danger" type="submit">
+            </form>
 
-                    <!--Search input-->
-                    <div class="form-group">
-                        <label class="sr-only" for="searchInput">Search</label>
-                        <input type="search" class="form-control" id="searchInput" placeholder="جستجو">
-                        </input>
-                    </div>
-                </form>
-            </div>
-
+        </div>
     </div>
 </div>
+{% endblock %}

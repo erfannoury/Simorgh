@@ -23,13 +23,14 @@ class RoomType(models.Model):
 
 class Images(models.Model):
     file_path = models.CharField(max_length=100)
+    image = models.ImageField(null=True)
     hotel = models.ForeignKey(Hotel, null=True, blank=True)
     room_type = models.ForeignKey(RoomType, null=True, blank=True)
 
 class Reservation(models.Model):
     reservation_time = models.DateTimeField()
     checkin_time = models.DateTimeField()
-    checkout_tiem = models.DateTimeField()
+    checkout_time = models.DateTimeField()
     traveller = models.ForeignKey('user_subsystem.Account')
     roomType = models.ForeignKey(RoomType)
     quantity = models.IntegerField()
