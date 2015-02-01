@@ -1,0 +1,50 @@
+@model Simorgh.Models.Rating
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Rating</legend>
+
+    <div class="display-label">UserId</div>
+    <div class="display-field">@Model.UserId</div>
+
+    <div class="display-label">StaffBavior</div>
+    <div class="display-field">@Model.StaffBavior</div>
+
+    <div class="display-label">RoomCleanliness</div>
+    <div class="display-field">@Model.RoomCleanliness</div>
+
+    <div class="display-label">OutdoorCleanliness</div>
+    <div class="display-field">@Model.OutdoorCleanliness</div>
+
+    <div class="display-label">Prestige</div>
+    <div class="display-field">@Model.Prestige</div>
+
+    <div class="display-label">FoodQuality</div>
+    <div class="display-field">@Model.FoodQuality</div>
+
+    <div class="display-label">EnvironmentQuality</div>
+    <div class="display-field">@Model.EnvironmentQuality</div>
+
+    <div class="display-label">PriceQualityRatio</div>
+    <div class="display-field">@Model.PriceQualityRatio</div>
+
+    <div class="display-label">Overal</div>
+    <div class="display-field">@Model.Overal</div>
+
+    <div class="display-label">Hotels</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.Hotels).ToString()</div>
+
+    <div class="display-label">AspNetUsers</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.AspNetUsers).ToString()</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.RatingId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

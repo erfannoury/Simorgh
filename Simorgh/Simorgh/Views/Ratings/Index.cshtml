@@ -1,0 +1,95 @@
+@model IEnumerable<Simorgh.Models.Rating>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            UserId
+        </th>
+        <th>
+            StaffBavior
+        </th>
+        <th>
+            RoomCleanliness
+        </th>
+        <th>
+            OutdoorCleanliness
+        </th>
+        <th>
+            Prestige
+        </th>
+        <th>
+            FoodQuality
+        </th>
+        <th>
+            EnvironmentQuality
+        </th>
+        <th>
+            PriceQualityRatio
+        </th>
+        <th>
+            Overal
+        </th>
+        <th>
+            Hotels
+        </th>
+        <th>
+            AspNetUsers
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RatingId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RatingId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RatingId })
+        </td>
+        <td>
+			@item.UserId
+        </td>
+        <td>
+			@item.StaffBavior
+        </td>
+        <td>
+			@item.RoomCleanliness
+        </td>
+        <td>
+			@item.OutdoorCleanliness
+        </td>
+        <td>
+			@item.Prestige
+        </td>
+        <td>
+			@item.FoodQuality
+        </td>
+        <td>
+			@item.EnvironmentQuality
+        </td>
+        <td>
+			@item.PriceQualityRatio
+        </td>
+        <td>
+			@item.Overal
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.Hotels).ToString()
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.AspNetUsers).ToString()
+        </td>
+    </tr>
+}
+
+</table>
+
+

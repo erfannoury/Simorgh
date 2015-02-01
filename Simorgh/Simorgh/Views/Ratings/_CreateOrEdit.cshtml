@@ -1,0 +1,87 @@
+@model Simorgh.Models.Rating
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.UserId)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.UserId)
+    @Html.ValidationMessageFor(model => model.UserId)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.StaffBavior)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.StaffBavior)
+    @Html.ValidationMessageFor(model => model.StaffBavior)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.RoomCleanliness)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.RoomCleanliness)
+    @Html.ValidationMessageFor(model => model.RoomCleanliness)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.OutdoorCleanliness)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.OutdoorCleanliness)
+    @Html.ValidationMessageFor(model => model.OutdoorCleanliness)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Prestige)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Prestige)
+    @Html.ValidationMessageFor(model => model.Prestige)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.FoodQuality)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.FoodQuality)
+    @Html.ValidationMessageFor(model => model.FoodQuality)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.EnvironmentQuality)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.EnvironmentQuality)
+    @Html.ValidationMessageFor(model => model.EnvironmentQuality)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.PriceQualityRatio)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.PriceQualityRatio)
+    @Html.ValidationMessageFor(model => model.PriceQualityRatio)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Overal)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Overal)
+    @Html.ValidationMessageFor(model => model.Overal)
+</div>
+
+<div class="editor-label">
+    Hotel
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.HotelId, ((IEnumerable<Simorgh.Models.Hotel>)ViewBag.PossibleHotels).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.HotelId.ToString(),
+        Selected = (Model != null) && (option.HotelId == Model.HotelId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.HotelId)
+</div>
