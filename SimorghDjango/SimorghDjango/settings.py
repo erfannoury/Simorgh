@@ -39,6 +39,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'customer_subsystem',
+    'hotelmanagement_subsystem',
+    'user_subsystem',
+    'support_subsystem',
 )
 
 MIDDLEWARE_CLASSES = (
