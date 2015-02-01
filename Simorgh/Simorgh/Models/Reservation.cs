@@ -17,10 +17,10 @@ namespace Simorgh.Models
         public string UserId { get; set; }
         public int RoomTypeId { get; set; }
         public System.DateTime ReservationTime { get; set; }
-        public System.DateTime CheckInTime { get; set; }
-        public System.DateTime CheckOutTime { get; set; }
-        public byte AdultsCount { get; set; }
-        public byte InfantsCount { get; set; }
+        public Nullable<System.DateTime> CheckInTime { get; set; }
+        public Nullable<System.DateTime> CheckOutTime { get; set; }
+        public Nullable<byte> AdultsCount { get; set; }
+        public Nullable<byte> InfantsCount { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual RoomType RoomType { get; set; }

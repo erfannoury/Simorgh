@@ -18,9 +18,9 @@ namespace Simorgh.Models
         public int RoomTypeId { get; set; }
         public System.DateTime ReviewTimestap { get; set; }
         public string Review { get; set; }
-        public int UpVotes { get; set; }
-        public int DownVotes { get; set; }
-        public bool IsConfirmed { get; set; }
+        public Nullable<int> UpVotes { get; set; }
+        public Nullable<int> DownVotes { get; set; }
+        public Nullable<bool> IsConfirmed { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual RoomType RoomType { get; set; }

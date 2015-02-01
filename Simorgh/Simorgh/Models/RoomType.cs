@@ -22,11 +22,11 @@ namespace Simorgh.Models
         }
     
         public int RoomTypeId { get; set; }
+        public int HotelId { get; set; }
         public string RoomTypeName { get; set; }
         public string RoomTypeDescription { get; set; }
-        public int RoomCapacity { get; set; }
-        public long Price { get; set; }
-        public int HotelId { get; set; }
+        public Nullable<int> RoomCapacity { get; set; }
+        public Nullable<long> Price { get; set; }
     
         public virtual Hotel Hotels { get; set; }
         public virtual ICollection<ImageFile> ImageFiles { get; set; }

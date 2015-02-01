@@ -16,14 +16,14 @@ namespace Simorgh.Models
     {
         public string UserId { get; set; }
         public int HotelId { get; set; }
-        public byte StaffBavior { get; set; }
-        public byte RoomCleanliness { get; set; }
-        public byte OutdoorCleanliness { get; set; }
-        public byte Prestige { get; set; }
-        public byte FoodQuality { get; set; }
-        public byte EnvironmentQuality { get; set; }
-        public byte PriceQualityRatio { get; set; }
-        public byte Overal { get; set; }
+        public Nullable<byte> StaffBavior { get; set; }
+        public Nullable<byte> RoomCleanliness { get; set; }
+        public Nullable<byte> OutdoorCleanliness { get; set; }
+        public Nullable<byte> Prestige { get; set; }
+        public Nullable<byte> FoodQuality { get; set; }
+        public Nullable<byte> EnvironmentQuality { get; set; }
+        public Nullable<byte> PriceQualityRatio { get; set; }
+        public Nullable<byte> Overal { get; set; }
     
         public virtual Hotel Hotels { get; set; }
         public virtual AspNetUser AspNetUsers { get; set; }

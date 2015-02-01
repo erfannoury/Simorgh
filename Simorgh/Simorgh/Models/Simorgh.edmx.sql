@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/01/2015 02:30:27
+-- Date Created: 02/01/2015 03:34:23
 -- Generated from EDMX file: E:\Code Vault\Github\Simorgh\Simorgh\Simorgh\Models\Simorgh.edmx
 -- --------------------------------------------------
 
@@ -182,14 +182,14 @@ GO
 -- Creating table 'Hotels'
 CREATE TABLE [dbo].[Hotels] (
     [HotelId] int IDENTITY(1,1) NOT NULL,
-    [HotelName] nvarchar(max)  NOT NULL,
-    [Address] nvarchar(max)  NOT NULL,
-    [Longtitude] bigint  NOT NULL,
-    [Latitude] bigint  NOT NULL,
-    [Description] nvarchar(max)  NOT NULL,
-    [Star] tinyint  NOT NULL,
-    [CityId] int  NOT NULL,
-    [ServerURL] nvarchar(max)  NOT NULL
+    [HotelName] nvarchar(max)  NULL,
+    [Address] nvarchar(max)  NULL,
+    [Longtitude] bigint  NULL,
+    [Latitude] bigint  NULL,
+    [Description] nvarchar(max)  NULL,
+    [Star] tinyint  NULL,
+    [CityId] int  NULL,
+    [ServerURL] nvarchar(max)  NULL
 );
 GO
 
@@ -197,26 +197,26 @@ GO
 CREATE TABLE [dbo].[ImageFiles] (
     [ImageFileId] int IDENTITY(1,1) NOT NULL,
     [Path] nvarchar(max)  NOT NULL,
-    [RoomTypeId] int  NOT NULL,
-    [HotelId] int  NOT NULL
+    [RoomTypeId] int  NULL,
+    [HotelId] int  NULL
 );
 GO
 
 -- Creating table 'RoomTypes'
 CREATE TABLE [dbo].[RoomTypes] (
     [RoomTypeId] int IDENTITY(1,1) NOT NULL,
-    [RoomTypeName] nvarchar(max)  NOT NULL,
-    [RoomTypeDescription] nvarchar(max)  NOT NULL,
-    [RoomCapacity] int  NOT NULL,
-    [Price] bigint  NOT NULL,
-    [HotelId] int  NOT NULL
+    [HotelId] int  NOT NULL,
+    [RoomTypeName] nvarchar(max)  NULL,
+    [RoomTypeDescription] nvarchar(max)  NULL,
+    [RoomCapacity] int  NULL,
+    [Price] bigint  NULL
 );
 GO
 
 -- Creating table 'Cities'
 CREATE TABLE [dbo].[Cities] (
     [CityId] int IDENTITY(1,1) NOT NULL,
-    [CityName] nvarchar(max)  NOT NULL
+    [CityName] nvarchar(max)  NULL
 );
 GO
 
@@ -224,10 +224,10 @@ GO
 CREATE TABLE [dbo].[Messages] (
     [MessageId] nvarchar(128)  NOT NULL,
     [FromUserId] nvarchar(128)  NOT NULL,
-    [ToUserId] nvarchar(128)  NOT NULL,
-    [MessageText] nvarchar(max)  NOT NULL,
-    [MessageTime] datetime  NOT NULL,
-    [IsRead] bit  NOT NULL,
+    [ToUserId] nvarchar(128)  NULL,
+    [MessageText] nvarchar(max)  NULL,
+    [MessageTime] datetime  NULL,
+    [IsRead] bit  NULL,
     [ReplyToMessageId] nvarchar(128)  NULL
 );
 GO
@@ -237,10 +237,10 @@ CREATE TABLE [dbo].[Reservations] (
     [UserId] nvarchar(128)  NOT NULL,
     [RoomTypeId] int  NOT NULL,
     [ReservationTime] datetime  NOT NULL,
-    [CheckInTime] datetime  NOT NULL,
-    [CheckOutTime] datetime  NOT NULL,
-    [AdultsCount] tinyint  NOT NULL,
-    [InfantsCount] tinyint  NOT NULL
+    [CheckInTime] datetime  NULL,
+    [CheckOutTime] datetime  NULL,
+    [AdultsCount] tinyint  NULL,
+    [InfantsCount] tinyint  NULL
 );
 GO
 
@@ -248,14 +248,14 @@ GO
 CREATE TABLE [dbo].[Ratings] (
     [UserId] nvarchar(128)  NOT NULL,
     [HotelId] int  NOT NULL,
-    [StaffBavior] tinyint  NOT NULL,
-    [RoomCleanliness] tinyint  NOT NULL,
-    [OutdoorCleanliness] tinyint  NOT NULL,
-    [Prestige] tinyint  NOT NULL,
-    [FoodQuality] tinyint  NOT NULL,
-    [EnvironmentQuality] tinyint  NOT NULL,
-    [PriceQualityRatio] tinyint  NOT NULL,
-    [Overal] tinyint  NOT NULL
+    [StaffBavior] tinyint  NULL,
+    [RoomCleanliness] tinyint  NULL,
+    [OutdoorCleanliness] tinyint  NULL,
+    [Prestige] tinyint  NULL,
+    [FoodQuality] tinyint  NULL,
+    [EnvironmentQuality] tinyint  NULL,
+    [PriceQualityRatio] tinyint  NULL,
+    [Overal] tinyint  NULL
 );
 GO
 
@@ -264,10 +264,10 @@ CREATE TABLE [dbo].[RoomReviews] (
     [UserId] nvarchar(128)  NOT NULL,
     [RoomTypeId] int  NOT NULL,
     [ReviewTimestap] datetime  NOT NULL,
-    [Review] nvarchar(max)  NOT NULL,
-    [UpVotes] int  NOT NULL,
-    [DownVotes] int  NOT NULL,
-    [IsConfirmed] bit  NOT NULL
+    [Review] nvarchar(max)  NULL,
+    [UpVotes] int  NULL,
+    [DownVotes] int  NULL,
+    [IsConfirmed] bit  NULL
 );
 GO
 

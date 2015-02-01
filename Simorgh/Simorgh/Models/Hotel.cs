@@ -24,11 +24,11 @@ namespace Simorgh.Models
         public int HotelId { get; set; }
         public string HotelName { get; set; }
         public string Address { get; set; }
-        public long Longtitude { get; set; }
-        public long Latitude { get; set; }
+        public Nullable<long> Longtitude { get; set; }
+        public Nullable<long> Latitude { get; set; }
         public string Description { get; set; }
-        public byte Star { get; set; }
-        public int CityId { get; set; }
+        public Nullable<byte> Star { get; set; }
+        public Nullable<int> CityId { get; set; }
         public string ServerURL { get; set; }
     
         public virtual ICollection<ImageFile> ImageFile { get; set; }

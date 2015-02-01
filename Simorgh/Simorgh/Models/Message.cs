@@ -23,8 +23,8 @@ namespace Simorgh.Models
         public string FromUserId { get; set; }
         public string ToUserId { get; set; }
         public string MessageText { get; set; }
-        public System.DateTime MessageTime { get; set; }
-        public bool IsRead { get; set; }
+        public Nullable<System.DateTime> MessageTime { get; set; }
+        public Nullable<bool> IsRead { get; set; }
         public string ReplyToMessageId { get; set; }
     
         public virtual AspNetUser FromUser { get; set; }

@@ -16,8 +16,8 @@ namespace Simorgh.Models
     {
         public int ImageFileId { get; set; }
         public string Path { get; set; }
-        public int RoomTypeId { get; set; }
-        public int HotelId { get; set; }
+        public Nullable<int> RoomTypeId { get; set; }
+        public Nullable<int> HotelId { get; set; }
     
         public virtual Hotel Hotels { get; set; }
         public virtual RoomType RoomType { get; set; }

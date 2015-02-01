@@ -160,14 +160,14 @@
       <PropertyRef Name="HotelId" />
     </Key>
     <Property Name="HotelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="HotelName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Longtitude" Type="bigint" Nullable="false" />
-    <Property Name="Latitude" Type="bigint" Nullable="false" />
-    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Star" Type="tinyint" Nullable="false" />
-    <Property Name="CityId" Type="int" Nullable="false" />
-    <Property Name="ServerURL" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HotelName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Longtitude" Type="bigint" Nullable="true" />
+    <Property Name="Latitude" Type="bigint" Nullable="true" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Star" Type="tinyint" Nullable="true" />
+    <Property Name="CityId" Type="int" Nullable="true" />
+    <Property Name="ServerURL" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="ImageFiles">
     <Key>
@@ -175,26 +175,26 @@
     </Key>
     <Property Name="ImageFileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="RoomTypeId" Type="int" Nullable="false" />
-    <Property Name="HotelId" Type="int" Nullable="false" />
+    <Property Name="RoomTypeId" Type="int" Nullable="true" />
+    <Property Name="HotelId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="RoomTypes">
     <Key>
       <PropertyRef Name="RoomTypeId" />
     </Key>
     <Property Name="RoomTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="RoomTypeName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="RoomTypeDescription" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="RoomCapacity" Type="int" Nullable="false" />
-    <Property Name="Price" Type="bigint" Nullable="false" />
     <Property Name="HotelId" Type="int" Nullable="false" />
+    <Property Name="RoomTypeName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="RoomTypeDescription" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="RoomCapacity" Type="int" Nullable="true" />
+    <Property Name="Price" Type="bigint" Nullable="true" />
   </EntityType>
   <EntityType Name="Cities">
     <Key>
       <PropertyRef Name="CityId" />
     </Key>
     <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CityName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Messages">
     <Key>
@@ -202,10 +202,10 @@
     </Key>
     <Property Name="MessageId" Type="nvarchar" StoreGeneratedPattern="Identity" Nullable="false" MaxLength="128" />
     <Property Name="FromUserId" Type="nvarchar" Nullable="false" MaxLength="128" />
-    <Property Name="ToUserId" Type="nvarchar" Nullable="false" MaxLength="128" />
-    <Property Name="MessageText" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="MessageTime" Type="datetime" Nullable="false" />
-    <Property Name="IsRead" Type="bit" Nullable="false" />
+    <Property Name="ToUserId" Type="nvarchar" Nullable="true" MaxLength="128" />
+    <Property Name="MessageText" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="MessageTime" Type="datetime" Nullable="true" />
+    <Property Name="IsRead" Type="bit" Nullable="true" />
     <Property Name="ReplyToMessageId" Type="nvarchar" Nullable="true" MaxLength="128" />
   </EntityType>
   <EntityType Name="Reservations">
@@ -217,10 +217,10 @@
     <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
     <Property Name="RoomTypeId" Type="int" Nullable="false" />
     <Property Name="ReservationTime" Type="datetime" Nullable="false" />
-    <Property Name="CheckInTime" Type="datetime" Nullable="false" />
-    <Property Name="CheckOutTime" Type="datetime" Nullable="false" />
-    <Property Name="AdultsCount" Type="tinyint" Nullable="false" />
-    <Property Name="InfantsCount" Type="tinyint" Nullable="false" />
+    <Property Name="CheckInTime" Type="datetime" Nullable="true" />
+    <Property Name="CheckOutTime" Type="datetime" Nullable="true" />
+    <Property Name="AdultsCount" Type="tinyint" Nullable="true" />
+    <Property Name="InfantsCount" Type="tinyint" Nullable="true" />
   </EntityType>
   <EntityType Name="Ratings">
     <Key>
@@ -229,14 +229,14 @@
     </Key>
     <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
     <Property Name="HotelId" Type="int" Nullable="false" />
-    <Property Name="StaffBavior" Type="tinyint" Nullable="false" />
-    <Property Name="RoomCleanliness" Type="tinyint" Nullable="false" />
-    <Property Name="OutdoorCleanliness" Type="tinyint" Nullable="false" />
-    <Property Name="Prestige" Type="tinyint" Nullable="false" />
-    <Property Name="FoodQuality" Type="tinyint" Nullable="false" />
-    <Property Name="EnvironmentQuality" Type="tinyint" Nullable="false" />
-    <Property Name="PriceQualityRatio" Type="tinyint" Nullable="false" />
-    <Property Name="Overal" Type="tinyint" Nullable="false" />
+    <Property Name="StaffBavior" Type="tinyint" Nullable="true" />
+    <Property Name="RoomCleanliness" Type="tinyint" Nullable="true" />
+    <Property Name="OutdoorCleanliness" Type="tinyint" Nullable="true" />
+    <Property Name="Prestige" Type="tinyint" Nullable="true" />
+    <Property Name="FoodQuality" Type="tinyint" Nullable="true" />
+    <Property Name="EnvironmentQuality" Type="tinyint" Nullable="true" />
+    <Property Name="PriceQualityRatio" Type="tinyint" Nullable="true" />
+    <Property Name="Overal" Type="tinyint" Nullable="true" />
   </EntityType>
   <EntityType Name="RoomReviews">
     <Key>
@@ -247,10 +247,10 @@
     <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
     <Property Name="RoomTypeId" Type="int" Nullable="false" />
     <Property Name="ReviewTimestap" Type="datetime" Nullable="false" />
-    <Property Name="Review" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="UpVotes" Type="int" Nullable="false" />
-    <Property Name="DownVotes" Type="int" Nullable="false" />
-    <Property Name="IsConfirmed" Type="bit" Nullable="false" />
+    <Property Name="Review" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="UpVotes" Type="int" Nullable="true" />
+    <Property Name="DownVotes" Type="int" Nullable="true" />
+    <Property Name="IsConfirmed" Type="bit" Nullable="true" />
   </EntityType>
   <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_Role_Id">
     <End Role="AspNetRoles" Type="Simorgh.Model.Store.AspNetRoles" Multiplicity="0..1" />
@@ -334,7 +334,7 @@
   </Association>
   <Association Name="ImageFileHotel">
     <End Role="ImageFile" Type="Simorgh.Model.Store.ImageFiles" Multiplicity="*" />
-    <End Role="Hotel" Type="Simorgh.Model.Store.Hotels" Multiplicity="1" />
+    <End Role="Hotel" Type="Simorgh.Model.Store.Hotels" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Hotel">
         <PropertyRef Name="HotelId" />
@@ -357,7 +357,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="RoomTypeImageFile">
-    <End Role="RoomType" Type="Simorgh.Model.Store.RoomTypes" Multiplicity="1" />
+    <End Role="RoomType" Type="Simorgh.Model.Store.RoomTypes" Multiplicity="0..1" />
     <End Role="ImageFile" Type="Simorgh.Model.Store.ImageFiles" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="RoomType">
@@ -369,7 +369,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_HOTEL_PK_CITY">
-    <End Role="City" Type="Simorgh.Model.Store.Cities" Multiplicity="1" />
+    <End Role="City" Type="Simorgh.Model.Store.Cities" Multiplicity="0..1" />
     <End Role="Hotel" Type="Simorgh.Model.Store.Hotels" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="City">
@@ -393,7 +393,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ToUserID_PK_UserId">
-    <End Role="AspNetUser" Type="Simorgh.Model.Store.AspNetUsers" Multiplicity="1" />
+    <End Role="AspNetUser" Type="Simorgh.Model.Store.AspNetUsers" Multiplicity="0..1" />
     <End Role="Message" Type="Simorgh.Model.Store.Messages" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="AspNetUser">
@@ -744,18 +744,18 @@
             <PropertyRef Name="HotelId" />
           </Key>
           <Property Name="HotelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HotelName" Type="String" Nullable="false" />
-          <Property Name="Address" Type="String" Nullable="false" />
-          <Property Name="Longtitude" Type="Int64" Nullable="false" />
-          <Property Name="Latitude" Type="Int64" Nullable="false" />
-          <Property Name="Description" Type="String" Nullable="false" />
-          <Property Name="Star" Type="Byte" Nullable="false" />
+          <Property Name="HotelName" Type="String" Nullable="true" />
+          <Property Name="Address" Type="String" Nullable="true" />
+          <Property Name="Longtitude" Type="Int64" Nullable="true" />
+          <Property Name="Latitude" Type="Int64" Nullable="true" />
+          <Property Name="Description" Type="String" Nullable="true" />
+          <Property Name="Star" Type="Byte" Nullable="true" />
           <NavigationProperty Name="ImageFile" Relationship="Simorgh.Model.ImageFileHotel" FromRole="Hotel" ToRole="ImageFile" />
           <NavigationProperty Name="RoomType" Relationship="Simorgh.Model.RoomTypeHotel" FromRole="Hotel" ToRole="RoomType" />
           <NavigationProperty Name="City" Relationship="Simorgh.Model.FK_HOTEL_PK_CITY" FromRole="Hotel" ToRole="City" />
           <NavigationProperty Name="Rating" Relationship="Simorgh.Model.FK_Rating_PK_Hotel" FromRole="Hotel" ToRole="Rating" />
-          <Property Name="CityId" Type="Int32" Nullable="false" />
-          <Property Name="ServerURL" Type="String" Nullable="false" />
+          <Property Name="CityId" Type="Int32" Nullable="true" />
+          <Property Name="ServerURL" Type="String" Nullable="true" />
         </EntityType>
         <EntityType Name="ImageFile">
           <Key>
@@ -765,12 +765,12 @@
           <Property Name="Path" Type="String" Nullable="false" />
           <NavigationProperty Name="Hotels" Relationship="Simorgh.Model.ImageFileHotel" FromRole="ImageFile" ToRole="Hotel" />
           <NavigationProperty Name="RoomType" Relationship="Simorgh.Model.RoomTypeImageFile" FromRole="ImageFile" ToRole="RoomType" />
-          <Property Name="RoomTypeId" Type="Int32" Nullable="false" />
-          <Property Name="HotelId" Type="Int32" Nullable="false" />
+          <Property Name="RoomTypeId" Type="Int32" Nullable="true" />
+          <Property Name="HotelId" Type="Int32" Nullable="true" />
         </EntityType>
         <Association Name="ImageFileHotel">
           <End Type="Simorgh.Model.ImageFile" Role="ImageFile" Multiplicity="*" />
-          <End Type="Simorgh.Model.Hotel" Role="Hotel" Multiplicity="1" />
+          <End Type="Simorgh.Model.Hotel" Role="Hotel" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Hotel">
               <PropertyRef Name="HotelId" />
@@ -785,15 +785,15 @@
             <PropertyRef Name="RoomTypeId" />
           </Key>
           <Property Name="RoomTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoomTypeName" Type="String" Nullable="false" />
-          <Property Name="RoomTypeDescription" Type="String" Nullable="false" />
-          <Property Name="RoomCapacity" Type="Int32" Nullable="false" />
-          <Property Name="Price" Type="Int64" Nullable="false" />
+          <Property Name="HotelId" Type="Int32" Nullable="false" />
+          <Property Name="RoomTypeName" Type="String" Nullable="true" />
+          <Property Name="RoomTypeDescription" Type="String" Nullable="true" />
+          <Property Name="RoomCapacity" Type="Int32" Nullable="true" />
+          <Property Name="Price" Type="Int64" Nullable="true" />
           <NavigationProperty Name="Hotels" Relationship="Simorgh.Model.RoomTypeHotel" FromRole="RoomType" ToRole="Hotel" />
           <NavigationProperty Name="ImageFiles" Relationship="Simorgh.Model.RoomTypeImageFile" FromRole="RoomType" ToRole="ImageFile" />
           <NavigationProperty Name="Reservations" Relationship="Simorgh.Model.PK_RoomType_FK_Reservation" FromRole="RoomType" ToRole="Reservation" />
           <NavigationProperty Name="RoomReviews" Relationship="Simorgh.Model.RoomTypeRoomReview" FromRole="RoomType" ToRole="RoomReview" />
-          <Property Name="HotelId" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="RoomTypeHotel">
           <End Type="Simorgh.Model.RoomType" Role="RoomType" Multiplicity="*" />
@@ -808,7 +808,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="RoomTypeImageFile">
-          <End Type="Simorgh.Model.RoomType" Role="RoomType" Multiplicity="1" />
+          <End Type="Simorgh.Model.RoomType" Role="RoomType" Multiplicity="0..1" />
           <End Type="Simorgh.Model.ImageFile" Role="ImageFile" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="RoomType">
@@ -824,11 +824,11 @@
             <PropertyRef Name="CityId" />
           </Key>
           <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CityName" Type="String" Nullable="false" />
+          <Property Name="CityName" Type="String" Nullable="true" />
           <NavigationProperty Name="Hotels" Relationship="Simorgh.Model.FK_HOTEL_PK_CITY" FromRole="City" ToRole="Hotel" />
         </EntityType>
         <Association Name="FK_HOTEL_PK_CITY">
-          <End Type="Simorgh.Model.City" Role="City" Multiplicity="1" />
+          <End Type="Simorgh.Model.City" Role="City" Multiplicity="0..1" />
           <End Type="Simorgh.Model.Hotel" Role="Hotel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="City">
@@ -845,10 +845,10 @@
           </Key>
           <Property Name="MessageId" Type="String" Nullable="false" annotation:StoreGeneratedPattern="Identity" FixedLength="false" MaxLength="128" Unicode="true" />
           <Property Name="FromUserId" Type="String" Nullable="false" FixedLength="false" MaxLength="128" Unicode="true" />
-          <Property Name="ToUserId" Type="String" Nullable="false" FixedLength="false" MaxLength="128" Unicode="true" />
-          <Property Name="MessageText" Type="String" Nullable="false" />
-          <Property Name="MessageTime" Type="DateTime" Nullable="false" />
-          <Property Name="IsRead" Type="Boolean" Nullable="false" />
+          <Property Name="ToUserId" Type="String" Nullable="true" FixedLength="false" MaxLength="128" Unicode="true" />
+          <Property Name="MessageText" Type="String" Nullable="true" />
+          <Property Name="MessageTime" Type="DateTime" Nullable="true" />
+          <Property Name="IsRead" Type="Boolean" Nullable="true" />
           <NavigationProperty Name="FromUser" Relationship="Simorgh.Model.FK_ToUserID_PK_UserId" FromRole="Message" ToRole="AspNetUser" />
           <NavigationProperty Name="ToUser" Relationship="Simorgh.Model.FK_FromUserID_PK_UserID" FromRole="Message" ToRole="AspNetUser" />
           <Property Name="ReplyToMessageId" Type="String" Nullable="true" FixedLength="false" MaxLength="128" Unicode="true" />
@@ -865,10 +865,10 @@
           <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="RoomTypeId" Type="Int32" Nullable="false" />
           <Property Name="ReservationTime" Type="DateTime" Nullable="false" />
-          <Property Name="CheckInTime" Type="DateTime" Nullable="false" />
-          <Property Name="CheckOutTime" Type="DateTime" Nullable="false" />
-          <Property Name="AdultsCount" Type="Byte" Nullable="false" />
-          <Property Name="InfantsCount" Type="Byte" Nullable="false" />
+          <Property Name="CheckInTime" Type="DateTime" Nullable="true" />
+          <Property Name="CheckOutTime" Type="DateTime" Nullable="true" />
+          <Property Name="AdultsCount" Type="Byte" Nullable="true" />
+          <Property Name="InfantsCount" Type="Byte" Nullable="true" />
           <NavigationProperty Name="RoomType" Relationship="Simorgh.Model.PK_RoomType_FK_Reservation" FromRole="Reservation" ToRole="RoomType" />
         </EntityType>
         <Association Name="AspNetUserReservation">
@@ -884,7 +884,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ToUserID_PK_UserId">
-          <End Type="Simorgh.Model.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="Simorgh.Model.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
           <End Type="Simorgh.Model.Message" Role="Message" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUser">
@@ -926,14 +926,14 @@
           </Key>
           <Property Name="UserId" Type="String" Nullable="false" FixedLength="false" MaxLength="128" Unicode="true" />
           <Property Name="HotelId" Type="Int32" Nullable="false" />
-          <Property Name="StaffBavior" Type="Byte" Nullable="false" />
-          <Property Name="RoomCleanliness" Type="Byte" Nullable="false" />
-          <Property Name="OutdoorCleanliness" Type="Byte" Nullable="false" />
-          <Property Name="Prestige" Type="Byte" Nullable="false" />
-          <Property Name="FoodQuality" Type="Byte" Nullable="false" />
-          <Property Name="EnvironmentQuality" Type="Byte" Nullable="false" />
-          <Property Name="PriceQualityRatio" Type="Byte" Nullable="false" />
-          <Property Name="Overal" Type="Byte" Nullable="false" />
+          <Property Name="StaffBavior" Type="Byte" Nullable="true" />
+          <Property Name="RoomCleanliness" Type="Byte" Nullable="true" />
+          <Property Name="OutdoorCleanliness" Type="Byte" Nullable="true" />
+          <Property Name="Prestige" Type="Byte" Nullable="true" />
+          <Property Name="FoodQuality" Type="Byte" Nullable="true" />
+          <Property Name="EnvironmentQuality" Type="Byte" Nullable="true" />
+          <Property Name="PriceQualityRatio" Type="Byte" Nullable="true" />
+          <Property Name="Overal" Type="Byte" Nullable="true" />
           <NavigationProperty Name="Hotels" Relationship="Simorgh.Model.FK_Rating_PK_Hotel" FromRole="Rating" ToRole="Hotel" />
           <NavigationProperty Name="AspNetUsers" Relationship="Simorgh.Model.FK_Rating_PK_AspNetUser" FromRole="Rating" ToRole="AspNetUser" />
         </EntityType>
@@ -946,10 +946,10 @@
           <Property Name="UserId" Type="String" Nullable="false" FixedLength="false" MaxLength="128" Unicode="true" />
           <Property Name="RoomTypeId" Type="Int32" Nullable="false" />
           <Property Name="ReviewTimestap" Type="DateTime" Nullable="false" />
-          <Property Name="Review" Type="String" Nullable="false" />
-          <Property Name="UpVotes" Type="Int32" Nullable="false" />
-          <Property Name="DownVotes" Type="Int32" Nullable="false" />
-          <Property Name="IsConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="Review" Type="String" Nullable="true" />
+          <Property Name="UpVotes" Type="Int32" Nullable="true" />
+          <Property Name="DownVotes" Type="Int32" Nullable="true" />
+          <Property Name="IsConfirmed" Type="Boolean" Nullable="true" />
           <NavigationProperty Name="AspNetUser" Relationship="Simorgh.Model.AspNetUserRoomReview" FromRole="RoomReview" ToRole="AspNetUser" />
           <NavigationProperty Name="RoomType" Relationship="Simorgh.Model.RoomTypeRoomReview" FromRole="RoomReview" ToRole="RoomType" />
         </EntityType>
@@ -1109,11 +1109,11 @@
       <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.RoomType)">
         <MappingFragment StoreEntitySet="RoomTypes">
           <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+          <ScalarProperty Name="HotelId" ColumnName="HotelId" />
           <ScalarProperty Name="RoomTypeName" ColumnName="RoomTypeName" />
           <ScalarProperty Name="RoomTypeDescription" ColumnName="RoomTypeDescription" />
           <ScalarProperty Name="RoomCapacity" ColumnName="RoomCapacity" />
           <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="HotelId" ColumnName="HotelId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
