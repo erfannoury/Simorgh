@@ -9,17 +9,29 @@
 <fieldset>
     <legend>Reservation</legend>
 
+    <div class="display-label">UserId</div>
+    <div class="display-field">@Model.UserId</div>
+
+    <div class="display-label">ReservationTime</div>
+    <div class="display-field">@String.Format("{0:g}", Model.ReservationTime)</div>
+
     <div class="display-label">CheckInTime</div>
     <div class="display-field">@String.Format("{0:g}", Model.CheckInTime)</div>
 
     <div class="display-label">CheckOutTime</div>
     <div class="display-field">@String.Format("{0:g}", Model.CheckOutTime)</div>
 
-    <div class="display-label">ApplicationUser</div>
-    <div class="display-field">@Html.DisplayTextFor(_ => Model.ApplicationUser).ToString()</div>
+    <div class="display-label">AdultsCount</div>
+    <div class="display-field">@Model.AdultsCount</div>
 
-    <div class="display-label">ReservationItems</div>
-    <div class="display-field">@(Model.ReservationItems == null ? "None" : Model.ReservationItems.Count.ToString())</div>
+    <div class="display-label">InfantsCount</div>
+    <div class="display-field">@Model.InfantsCount</div>
+
+    <div class="display-label">AspNetUser</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.AspNetUser).ToString()</div>
+
+    <div class="display-label">RoomType</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.RoomType).ToString()</div>
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.ReservationId }) |

@@ -18,7 +18,7 @@ namespace Simorgh.Controllers
 
         public ViewResult Index()
         {
-            return View(context.Reservations.Include(reservation => reservation.ReservationItems).ToList());
+            return View(context.Reservations.Include(reservation => reservation.RoomType).ToList());
         }
 
         //
@@ -35,6 +35,7 @@ namespace Simorgh.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.PossibleRoomTypes = context.RoomTypes;
             return View();
         } 
 
@@ -51,6 +52,7 @@ namespace Simorgh.Controllers
                 return RedirectToAction("Index");  
             }
 
+            ViewBag.PossibleRoomTypes = context.RoomTypes;
             return View(reservation);
         }
         
@@ -60,6 +62,7 @@ namespace Simorgh.Controllers
         public ActionResult Edit(int id)
         {
             Reservation reservation = context.Reservations.Single(x => x.ReservationId == id);
+            ViewBag.PossibleRoomTypes = context.RoomTypes;
             return View(reservation);
         }
 
@@ -75,6 +78,7 @@ namespace Simorgh.Controllers
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.PossibleRoomTypes = context.RoomTypes;
             return View(reservation);
         }
 

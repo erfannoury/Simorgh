@@ -13,16 +13,28 @@
     <tr>
         <th></th>
         <th>
+            UserId
+        </th>
+        <th>
+            ReservationTime
+        </th>
+        <th>
             CheckInTime
         </th>
         <th>
             CheckOutTime
         </th>
         <th>
-            ApplicationUser
+            AdultsCount
         </th>
         <th>
-            ReservationItems
+            InfantsCount
+        </th>
+        <th>
+            AspNetUser
+        </th>
+        <th>
+            RoomType
         </th>
     </tr>
 
@@ -34,16 +46,28 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.ReservationId })
         </td>
         <td>
+			@item.UserId
+        </td>
+        <td>
+			@String.Format("{0:g}", item.ReservationTime)
+        </td>
+        <td>
 			@String.Format("{0:g}", item.CheckInTime)
         </td>
         <td>
 			@String.Format("{0:g}", item.CheckOutTime)
         </td>
         <td>
-			@Html.DisplayTextFor(_ => item.ApplicationUser).ToString()
+			@item.AdultsCount
         </td>
         <td>
-			@(item.ReservationItems == null ? "None" : item.ReservationItems.Count.ToString())
+			@item.InfantsCount
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.AspNetUser).ToString()
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.RoomType).ToString()
         </td>
     </tr>
 }
