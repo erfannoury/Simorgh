@@ -3,8 +3,6 @@
 <table>
     {% if notfound %}
         نتیجه‌ای یافت نشد.
-        {% else %}
-        fuck
     {% endif %}
 
     {% for hotel in hotels %}
@@ -13,7 +11,7 @@
             {{ hotel.name }}
         </td>
         <td>
-            {{ hotel.images.all }}
+            <img src="{{ hotel.main_image }}">
         </td>
     </tr>
     {% endfor %}

@@ -13,6 +13,7 @@ class Hotel(models.Model):
     description = models.TextField(null=True, blank=True)
     star = models.SmallIntegerField(max_length=5)
     city = models.ForeignKey(City)
+    main_image = models.ImageField(null=True)
 
 class RoomType(models.Model):
     title = models.CharField(max_length=100)

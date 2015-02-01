@@ -12,10 +12,9 @@ def index(request):
 def search(request):
     if request.method == "GET":
         q = request.GET['q']
+        hotels = Hotel.objects.all()
         hotels = Hotel.objects.filter(Q(city__name__contains=q) | Q(address__contains=q) | Q(description__contains=q))
-        print('ssamme')
         if (len(hotels) == 0):
             return render(request, 'customer_subsystem/search_result.html', {"notfound" : True})
-        print('amme')
         return render(request, 'customer_subsystem/search_result.html', {"hotels" : hotels})
     return render(request, 'customer_subsystem/search_result.html', {"notfound" : True})
