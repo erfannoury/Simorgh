@@ -1,0 +1,52 @@
+@model Simorgh.Models.Message
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.FromUserId)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.FromUserId)
+    @Html.ValidationMessageFor(model => model.FromUserId)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ToUserId)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ToUserId)
+    @Html.ValidationMessageFor(model => model.ToUserId)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.MessageText)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.MessageText)
+    @Html.ValidationMessageFor(model => model.MessageText)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.MessageTime)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.MessageTime)
+    @Html.ValidationMessageFor(model => model.MessageTime)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.IsRead)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.IsRead)
+    @Html.ValidationMessageFor(model => model.IsRead)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ReplyToMessageId)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ReplyToMessageId)
+    @Html.ValidationMessageFor(model => model.ReplyToMessageId)
+</div>
+

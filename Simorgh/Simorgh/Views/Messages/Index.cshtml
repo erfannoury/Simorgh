@@ -1,0 +1,89 @@
+@model IEnumerable<Simorgh.Models.Message>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            FromUserId
+        </th>
+        <th>
+            ToUserId
+        </th>
+        <th>
+            MessageText
+        </th>
+        <th>
+            MessageTime
+        </th>
+        <th>
+            IsRead
+        </th>
+        <th>
+            ReplyToMessageId
+        </th>
+        <th>
+            FromUser
+        </th>
+        <th>
+            ToUser
+        </th>
+        <th>
+            Messages
+        </th>
+        <th>
+            ReplyToMessage
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MessageId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MessageId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MessageId })
+        </td>
+        <td>
+			@item.FromUserId
+        </td>
+        <td>
+			@item.ToUserId
+        </td>
+        <td>
+			@item.MessageText
+        </td>
+        <td>
+			@String.Format("{0:g}", item.MessageTime)
+        </td>
+        <td>
+			@item.IsRead
+        </td>
+        <td>
+			@item.ReplyToMessageId
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.FromUser).ToString()
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.ToUser).ToString()
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.Messages).ToString()
+        </td>
+        <td>
+			@(item.ReplyToMessage == null ? "None" : item.ReplyToMessage.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+

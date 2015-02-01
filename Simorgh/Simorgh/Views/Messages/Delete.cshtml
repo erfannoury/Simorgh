@@ -1,0 +1,50 @@
+@model Simorgh.Models.Message
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Message</legend>
+
+    <div class="display-label">FromUserId</div>
+    <div class="display-field">@Model.FromUserId</div>
+
+    <div class="display-label">ToUserId</div>
+    <div class="display-field">@Model.ToUserId</div>
+
+    <div class="display-label">MessageText</div>
+    <div class="display-field">@Model.MessageText</div>
+
+    <div class="display-label">MessageTime</div>
+    <div class="display-field">@String.Format("{0:g}", Model.MessageTime)</div>
+
+    <div class="display-label">IsRead</div>
+    <div class="display-field">@Model.IsRead</div>
+
+    <div class="display-label">ReplyToMessageId</div>
+    <div class="display-field">@Model.ReplyToMessageId</div>
+
+    <div class="display-label">FromUser</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.FromUser).ToString()</div>
+
+    <div class="display-label">ToUser</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.ToUser).ToString()</div>
+
+    <div class="display-label">Messages</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.Messages).ToString()</div>
+
+    <div class="display-label">ReplyToMessage</div>
+    <div class="display-field">@(Model.ReplyToMessage == null ? "None" : Model.ReplyToMessage.Count.ToString())</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+
