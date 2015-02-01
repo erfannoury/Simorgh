@@ -1,51 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.EnterpriseServices.Internal;
-using System.Linq;
-using System.Web;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.ComponentModel.DataAnnotations;
+//using System.ComponentModel.DataAnnotations.Schema;
+//using System.Data.Entity;
+//using System.EnterpriseServices.Internal;
+//using System.Linq;
+//using System.Web;
 
-namespace Simorgh.Models
-{
-    public class RoomType
-    {
-        [Key, DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int RoomTypeId { get; set; }
+//namespace Simorgh.Models
+//{
+//    public class RoomType
+//    {
+//        [Key, DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+//        public int RoomTypeId { get; set; }
 
-        [Range(0, double.MaxValue, ErrorMessage = "The value must be greater than 0")]
-        public int ImageFolderId { get; set; }
+//        [Range(0, double.MaxValue, ErrorMessage = "The value must be greater than 0")]
+//        public int ImageFolderId { get; set; }
 
-        [Required]
-        [StringLength(60, ErrorMessage = "Title cannot be longer than 60 characters.")]
-        public string Title { get; set; }
+//        [Required]
+//        [StringLength(60, ErrorMessage = "Title cannot be longer than 60 characters.")]
+//        public string Title { get; set; }
 
-        public string Description { get; set; }
+//        public string Description { get; set; }
 
-        [Range(0, double.MaxValue, ErrorMessage = "The value must be at least 0")]
-        public int RoomCapacity { get; set; }
+//        [Range(0, double.MaxValue, ErrorMessage = "The value must be at least 0")]
+//        public int RoomCapacity { get; set; }
 
-        [Range(0, double.MaxValue, ErrorMessage = "The value must be at least 0")]
-        public int TotalCount { get; set; }
+//        [Range(0, double.MaxValue, ErrorMessage = "The value must be at least 0")]
+//        public int TotalCount { get; set; }
 
-        [Range(0, double.MaxValue, ErrorMessage = "The value must be at least 0")]
-        public int VacantCount { get; set; }
+//        [Range(0, double.MaxValue, ErrorMessage = "The value must be at least 0")]
+//        public int VacantCount { get; set; }
 
-        [Range(0, double.MaxValue, ErrorMessage = "The value must be at least 0")]
-        public int Price { get; set; }
+//        [Range(0, double.MaxValue, ErrorMessage = "The value must be at least 0")]
+//        public int Price { get; set; }
 
 
-        public int HotelId { get; set; }
+//        public int HotelId { get; set; }
 
-        public virtual Hotel RoomTypeHotel { get; set; }
+//        public virtual Hotel RoomTypeHotel { get; set; }
 
-        public virtual ICollection<ImageFile> RoomTypeImageFiles { get; set; } 
+//        public virtual ICollection<ImageFile> RoomTypeImageFiles { get; set; } 
 
-    }
+//    }
 
-    public class RoomTypeDbContext : DbContext
-    {
-        public DbSet<RoomType> RoomTypes { get; set; }
-    }
-}
+//    public class RoomTypeDbContext : DbContext
+//    {
+//        public DbSet<RoomType> RoomTypes { get; set; }
+//    }
+//}
