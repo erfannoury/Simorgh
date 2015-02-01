@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2c926a69fd974d74a1362479934f1975" Name="Diagram1" ZoomLevel="86" DisplayType="true">
-        <EntityTypeShape EntityType="Simorgh.Model.AspNetRole" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="2c926a69fd974d74a1362479934f1975" Name="Diagram1" ZoomLevel="94" DisplayType="true">
+        <EntityTypeShape EntityType="Simorgh.Model.AspNetRole" Width="1.5" PointX="4.5" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Simorgh.Model.AspNetUserClaim" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Simorgh.Model.AspNetUserLogin" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Simorgh.Model.AspNetUserRole" Width="1.5" PointX="6" PointY="5.5" IsExpanded="true" />
@@ -35,8 +35,8 @@
         <EntityTypeShape EntityType="Simorgh.Model.RoomReview" Width="2.75" PointX="17.125" PointY="8.125" />
         <AssociationConnector Association="Simorgh.Model.FK_Rating_PK_Hotel" ManuallyRouted="true" >
           <ConnectorPoint PointX="14.2499975" PointY="8.125" />
-          <ConnectorPoint PointX="14.2499975" PointY="4.6849043007277569" />
-          <ConnectorPoint PointX="15" PointY="4.6849043007277569" />
+          <ConnectorPoint PointX="14.2499975" PointY="4.6535095937053361" />
+          <ConnectorPoint PointX="15" PointY="4.6535095937053361" />
         </AssociationConnector>
         <AssociationConnector Association="Simorgh.Model.FK_Rating_PK_AspNetUser" />
         <AssociationConnector Association="Simorgh.Model.AspNetUserRoomReview" />

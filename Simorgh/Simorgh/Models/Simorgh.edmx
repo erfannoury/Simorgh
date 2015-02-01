@@ -210,10 +210,9 @@
   </EntityType>
   <EntityType Name="Reservations">
     <Key>
-      <PropertyRef Name="ReservationTime" />
-      <PropertyRef Name="UserId" />
-      <PropertyRef Name="RoomTypeId" />
+      <PropertyRef Name="ReservationId" />
     </Key>
+    <Property Name="ReservationId" Type="int" Nullable="false" />
     <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
     <Property Name="RoomTypeId" Type="int" Nullable="false" />
     <Property Name="ReservationTime" Type="datetime" Nullable="false" />
@@ -224,9 +223,9 @@
   </EntityType>
   <EntityType Name="Ratings">
     <Key>
-      <PropertyRef Name="UserId" />
-      <PropertyRef Name="HotelId" />
+      <PropertyRef Name="RatingId" />
     </Key>
+    <Property Name="RatingId" Type="int" Nullable="false" />
     <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
     <Property Name="HotelId" Type="int" Nullable="false" />
     <Property Name="StaffBavior" Type="tinyint" Nullable="true" />
@@ -240,10 +239,9 @@
   </EntityType>
   <EntityType Name="RoomReviews">
     <Key>
-      <PropertyRef Name="UserId" />
-      <PropertyRef Name="RoomTypeId" />
-      <PropertyRef Name="ReviewTimestap" />
+      <PropertyRef Name="RoomReviewId" />
     </Key>
+    <Property Name="RoomReviewId" Type="int" Nullable="false" />
     <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
     <Property Name="RoomTypeId" Type="int" Nullable="false" />
     <Property Name="ReviewTimestap" Type="datetime" Nullable="false" />
@@ -857,11 +855,10 @@
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
-            <PropertyRef Name="ReservationTime" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoomTypeId" />
+            <PropertyRef Name="ReservationId" />
           </Key>
           <NavigationProperty Name="AspNetUser" Relationship="Simorgh.Model.AspNetUserReservation" FromRole="Reservation" ToRole="AspNetUser" />
+          <Property Name="ReservationId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="RoomTypeId" Type="Int32" Nullable="false" />
           <Property Name="ReservationTime" Type="DateTime" Nullable="false" />
@@ -921,9 +918,9 @@
         </Association>
         <EntityType Name="Rating">
           <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="HotelId" />
+            <PropertyRef Name="RatingId" />
           </Key>
+          <Property Name="RatingId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="String" Nullable="false" FixedLength="false" MaxLength="128" Unicode="true" />
           <Property Name="HotelId" Type="Int32" Nullable="false" />
           <Property Name="StaffBavior" Type="Byte" Nullable="true" />
@@ -939,10 +936,9 @@
         </EntityType>
         <EntityType Name="RoomReview">
           <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoomTypeId" />
-            <PropertyRef Name="ReviewTimestap" />
+            <PropertyRef Name="RoomReviewId" />
           </Key>
+          <Property Name="RoomReviewId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="String" Nullable="false" FixedLength="false" MaxLength="128" Unicode="true" />
           <Property Name="RoomTypeId" Type="Int32" Nullable="false" />
           <Property Name="ReviewTimestap" Type="DateTime" Nullable="false" />
@@ -1141,9 +1137,10 @@
     <EntitySetMapping Name="Reservations">
       <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.Reservation)">
         <MappingFragment StoreEntitySet="Reservations">
-          <ScalarProperty Name="ReservationTime" ColumnName="ReservationTime" />
+          <ScalarProperty Name="ReservationId" ColumnName="ReservationId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+          <ScalarProperty Name="ReservationTime" ColumnName="ReservationTime" />
           <ScalarProperty Name="CheckInTime" ColumnName="CheckInTime" />
           <ScalarProperty Name="CheckOutTime" ColumnName="CheckOutTime" />
           <ScalarProperty Name="AdultsCount" ColumnName="AdultsCount" />
@@ -1154,6 +1151,7 @@
     <EntitySetMapping Name="Ratings">
       <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.Rating)">
         <MappingFragment StoreEntitySet="Ratings">
+          <ScalarProperty Name="RatingId" ColumnName="RatingId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="HotelId" ColumnName="HotelId" />
           <ScalarProperty Name="StaffBavior" ColumnName="StaffBavior" />
@@ -1170,6 +1168,7 @@
     <EntitySetMapping Name="RoomReviews">
       <EntityTypeMapping TypeName="IsTypeOf(Simorgh.Model.RoomReview)">
         <MappingFragment StoreEntitySet="RoomReviews">
+          <ScalarProperty Name="RoomReviewId" ColumnName="RoomReviewId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
           <ScalarProperty Name="ReviewTimestap" ColumnName="ReviewTimestap" />

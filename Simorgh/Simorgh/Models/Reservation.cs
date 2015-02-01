@@ -14,6 +14,7 @@ namespace Simorgh.Models
     
     public partial class Reservation
     {
+        public int ReservationId { get; set; }
         public string UserId { get; set; }
         public int RoomTypeId { get; set; }
         public System.DateTime ReservationTime { get; set; }

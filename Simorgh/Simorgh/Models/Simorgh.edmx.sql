@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/01/2015 03:34:23
+-- Date Created: 02/01/2015 04:05:22
 -- Generated from EDMX file: E:\Code Vault\Github\Simorgh\Simorgh\Simorgh\Models\Simorgh.edmx
 -- --------------------------------------------------
 
@@ -234,6 +234,7 @@ GO
 
 -- Creating table 'Reservations'
 CREATE TABLE [dbo].[Reservations] (
+    [ReservationId] int  NOT NULL,
     [UserId] nvarchar(128)  NOT NULL,
     [RoomTypeId] int  NOT NULL,
     [ReservationTime] datetime  NOT NULL,
@@ -246,6 +247,7 @@ GO
 
 -- Creating table 'Ratings'
 CREATE TABLE [dbo].[Ratings] (
+    [RatingId] int  NOT NULL,
     [UserId] nvarchar(128)  NOT NULL,
     [HotelId] int  NOT NULL,
     [StaffBavior] tinyint  NULL,
@@ -261,6 +263,7 @@ GO
 
 -- Creating table 'RoomReviews'
 CREATE TABLE [dbo].[RoomReviews] (
+    [RoomReviewId] int  NOT NULL,
     [UserId] nvarchar(128)  NOT NULL,
     [RoomTypeId] int  NOT NULL,
     [ReviewTimestap] datetime  NOT NULL,
@@ -335,22 +338,22 @@ ADD CONSTRAINT [PK_Messages]
     PRIMARY KEY CLUSTERED ([MessageId] ASC);
 GO
 
--- Creating primary key on [ReservationTime], [UserId], [RoomTypeId] in table 'Reservations'
+-- Creating primary key on [ReservationId] in table 'Reservations'
 ALTER TABLE [dbo].[Reservations]
 ADD CONSTRAINT [PK_Reservations]
-    PRIMARY KEY CLUSTERED ([ReservationTime], [UserId], [RoomTypeId] ASC);
+    PRIMARY KEY CLUSTERED ([ReservationId] ASC);
 GO
 
--- Creating primary key on [UserId], [HotelId] in table 'Ratings'
+-- Creating primary key on [RatingId] in table 'Ratings'
 ALTER TABLE [dbo].[Ratings]
 ADD CONSTRAINT [PK_Ratings]
-    PRIMARY KEY CLUSTERED ([UserId], [HotelId] ASC);
+    PRIMARY KEY CLUSTERED ([RatingId] ASC);
 GO
 
--- Creating primary key on [UserId], [RoomTypeId], [ReviewTimestap] in table 'RoomReviews'
+-- Creating primary key on [RoomReviewId] in table 'RoomReviews'
 ALTER TABLE [dbo].[RoomReviews]
 ADD CONSTRAINT [PK_RoomReviews]
-    PRIMARY KEY CLUSTERED ([UserId], [RoomTypeId], [ReviewTimestap] ASC);
+    PRIMARY KEY CLUSTERED ([RoomReviewId] ASC);
 GO
 
 -- --------------------------------------------------
@@ -585,6 +588,12 @@ ADD CONSTRAINT [FK_Rating_PK_AspNetUser]
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
+-- Creating non-clustered index for FOREIGN KEY 'FK_Rating_PK_AspNetUser'
+CREATE INDEX [IX_FK_Rating_PK_AspNetUser]
+ON [dbo].[Ratings]
+    ([UserId]);
+GO
+
 -- Creating foreign key on [UserId] in table 'RoomReviews'
 ALTER TABLE [dbo].[RoomReviews]
 ADD CONSTRAINT [FK_AspNetUserRoomReview]
@@ -592,6 +601,12 @@ ADD CONSTRAINT [FK_AspNetUserRoomReview]
     REFERENCES [dbo].[AspNetUsers]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_AspNetUserRoomReview'
+CREATE INDEX [IX_FK_AspNetUserRoomReview]
+ON [dbo].[RoomReviews]
+    ([UserId]);
 GO
 
 -- Creating foreign key on [RoomTypeId] in table 'RoomReviews'

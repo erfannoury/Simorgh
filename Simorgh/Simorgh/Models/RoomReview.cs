@@ -14,6 +14,7 @@ namespace Simorgh.Models
     
     public partial class RoomReview
     {
+        public int RoomReviewId { get; set; }
         public string UserId { get; set; }
         public int RoomTypeId { get; set; }
         public System.DateTime ReviewTimestap { get; set; }
