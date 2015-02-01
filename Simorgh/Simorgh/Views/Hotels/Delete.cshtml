@@ -1,0 +1,53 @@
+@model Simorgh.Models.Hotel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Hotel</legend>
+
+    <div class="display-label">HotelName</div>
+    <div class="display-field">@Model.HotelName</div>
+
+    <div class="display-label">Address</div>
+    <div class="display-field">@Model.Address</div>
+
+    <div class="display-label">Longtitude</div>
+    <div class="display-field">@Model.Longtitude</div>
+
+    <div class="display-label">Latitude</div>
+    <div class="display-field">@Model.Latitude</div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">@Model.Description</div>
+
+    <div class="display-label">Star</div>
+    <div class="display-field">@Model.Star</div>
+
+    <div class="display-label">ServerURL</div>
+    <div class="display-field">@Model.ServerURL</div>
+
+    <div class="display-label">ImageFile</div>
+    <div class="display-field">@(Model.ImageFile == null ? "None" : Model.ImageFile.Count.ToString())</div>
+
+    <div class="display-label">RoomType</div>
+    <div class="display-field">@(Model.RoomType == null ? "None" : Model.RoomType.Count.ToString())</div>
+
+    <div class="display-label">City</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.City).ToString()</div>
+
+    <div class="display-label">Rating</div>
+    <div class="display-field">@(Model.Rating == null ? "None" : Model.Rating.Count.ToString())</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

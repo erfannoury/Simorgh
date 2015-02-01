@@ -1,0 +1,95 @@
+@model IEnumerable<Simorgh.Models.Hotel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            HotelName
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Longtitude
+        </th>
+        <th>
+            Latitude
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Star
+        </th>
+        <th>
+            ServerURL
+        </th>
+        <th>
+            ImageFile
+        </th>
+        <th>
+            RoomType
+        </th>
+        <th>
+            City
+        </th>
+        <th>
+            Rating
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HotelId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HotelId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HotelId })
+        </td>
+        <td>
+			@item.HotelName
+        </td>
+        <td>
+			@item.Address
+        </td>
+        <td>
+			@item.Longtitude
+        </td>
+        <td>
+			@item.Latitude
+        </td>
+        <td>
+			@item.Description
+        </td>
+        <td>
+			@item.Star
+        </td>
+        <td>
+			@item.ServerURL
+        </td>
+        <td>
+			@(item.ImageFile == null ? "None" : item.ImageFile.Count.ToString())
+        </td>
+        <td>
+			@(item.RoomType == null ? "None" : item.RoomType.Count.ToString())
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.City).ToString()
+        </td>
+        <td>
+			@(item.Rating == null ? "None" : item.Rating.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+
