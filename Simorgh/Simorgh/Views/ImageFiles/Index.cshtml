@@ -13,13 +13,13 @@
     <tr>
         <th></th>
         <th>
-            ImageFileLocation
+            Path
         </th>
         <th>
-            ImageFileHotel
+            Hotels
         </th>
         <th>
-            ImageFileRoomType
+            RoomType
         </th>
     </tr>
 
@@ -31,13 +31,13 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.ImageFileId })
         </td>
         <td>
-			@item.ImageFileLocation
+			@item.Path
         </td>
         <td>
-			@(item.ImageFileHotel == null ? "None" : item.ImageFileHotel.Name)
+			@Html.DisplayTextFor(_ => item.Hotels).ToString()
         </td>
         <td>
-			@(item.ImageFileRoomType == null ? "None" : item.ImageFileRoomType.Title)
+			@Html.DisplayTextFor(_ => item.RoomType).ToString()
         </td>
     </tr>
 }

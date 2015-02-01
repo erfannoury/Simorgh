@@ -18,7 +18,7 @@ namespace Simorgh.Controllers
 
         public ViewResult Index()
         {
-            return View(context.ImageFiles.ToList());
+            return View(context.ImageFiles.Include(imagefile => imagefile.RoomType).ToList());
         }
 
         //
@@ -35,8 +35,8 @@ namespace Simorgh.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.PossibleHotels = context.Hotels;
             ViewBag.PossibleRoomTypes = context.RoomTypes;
+            ViewBag.PossibleHotels = context.Hotels;
             return View();
         } 
 
@@ -53,8 +53,8 @@ namespace Simorgh.Controllers
                 return RedirectToAction("Index");  
             }
 
-            ViewBag.PossibleHotels = context.Hotels;
             ViewBag.PossibleRoomTypes = context.RoomTypes;
+            ViewBag.PossibleHotels = context.Hotels;
             return View(imagefile);
         }
         
@@ -64,8 +64,8 @@ namespace Simorgh.Controllers
         public ActionResult Edit(int id)
         {
             ImageFile imagefile = context.ImageFiles.Single(x => x.ImageFileId == id);
-            ViewBag.PossibleHotels = context.Hotels;
             ViewBag.PossibleRoomTypes = context.RoomTypes;
+            ViewBag.PossibleHotels = context.Hotels;
             return View(imagefile);
         }
 
@@ -81,8 +81,8 @@ namespace Simorgh.Controllers
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.PossibleHotels = context.Hotels;
             ViewBag.PossibleRoomTypes = context.RoomTypes;
+            ViewBag.PossibleHotels = context.Hotels;
             return View(imagefile);
         }
 
