@@ -1,0 +1,46 @@
+#center-content {
+    margin-top: 20px;
+}
+
+#center-content >.row {
+    margin-bottom: 40px;
+}
+/*Slideshow*/
+.productsImg img {
+    width: auto;
+    height: 325px;
+    max-height: 325px;
+    margin: 0 auto;
+}
+
+.productsImg {
+    text-align: center;
+}
+.carousel .carousel-left{
+    background-image: none;
+}
+
+.carousel-control.left{
+    background-image: none;
+}
+
+.carousel-control.right{
+    background-image: none;
+}
+
+/*glyphicons colors*/
+.glyphicon.glyphicon-gift {
+    color: #007241;
+}
+.glyphicon.glyphicon-star {
+    color: #A65900;
+}
+.glyphicon.glyphicon-heart {
+    color: #94002D;
+}
+.glyphicon.glyphicon-calendar {
+    color: #200772;
+}
+
+
+

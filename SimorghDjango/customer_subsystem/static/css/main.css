@@ -1,0 +1,320 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+@font-face {
+    font-family:"BBCNassim";
+    src: url('../fonts/BBCNassim.eot');
+    src: local("☺" ),
+    url('../fonts/BBCNassim.woff')
+    format("woff"),
+    url('../fonts/BBCNassim.ttf')
+    format( "truetype" );
+}
+body {
+    font-family: "BBCNassim" !important;
+    margin-bottom: 80px;
+}
+
+.footer {
+    background: #16a085;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 80px;
+    color:#fff;
+    padding-top: 10px;
+}
+
+
+::selection {
+    background: #3bc492; /* Safari */
+}
+::-moz-selection {
+    background: #3bc492; /* Firefox */
+}
+
+/*
+ Site header css
+*/
+body {
+    padding-bottom: 0px;
+}
+
+.site-header {
+    background-color: #bdc3c7;
+}
+
+.site-header-item {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.site-header-item h1,
+.site-header-item > span{
+    font-size: 36px;
+}
+
+.banner {
+    text-align: right;
+}
+
+/* -->Categoriees */
+.site-header-item .nav-pills > li.active > a,
+.site-header-item .nav-pills > li.active > a:hover,
+.site-header-item .nav-pills > li.active > a:focus {
+    color: #ffffff;
+    background-color: #e8e8e8;
+}
+.site-header-item .nav-pills > li.active > a .caret,
+.site-header-item .nav-pills > li.active > a:hover .caret,
+.site-header-item .nav-pills > li.active > a:focus .caret {
+    border-top-color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
+.site-header-item a {
+    color: #000000;
+    font-size: 16px;
+}
+
+
+/*-->cart*/
+.site-header-item .nav .caret {
+    border-top-color: #000 !important;
+    border-bottom-color: #000 !important;
+}
+
+#cart-link {
+    color: #000000;
+}
+
+#cart-link:hover {
+    color: #444444;
+}
+
+#display-cart {
+    top: 100%;
+    margin-top: 0px;
+}
+
+#display-cart .arrow {
+    left: 30px;
+}
+
+#display-cart img {
+    height: 50px;
+    max-height: 50px;
+    width: 60px;
+    max-width: 60px;
+}
+
+#display-cart .popover-content {
+    width: 400px;
+}
+
+#display-cart {
+max-width: none !important;
+}
+
+#display-cart td {
+    vertical-align: middle;
+    direction: rtl;
+}
+/*-->SearchBox*/
+#searchInput {
+    text-align: right;
+    font-size: 16px;
+}
+
+#search-box .dropdown-menu {
+    text-align: left;
+}
+#search-box .form-control {
+}
+#search-box .form-control:focus {
+    border-color: rgba(27, 43, 58, 0.29);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(27, 43, 58, 0.29);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(27, 43, 58, 0.29);
+}
+
+#search-box .dropdown-menu > li > span {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.428571429;
+    color: #333333;
+    white-space: nowrap;
+    cursor: pointer;
+}
+#search-box .dropdown-menu > li > span:hover,
+#search-box .dropdown-menu > li > span:focus {
+    text-decoration: none;
+    color: #262626;
+    background-color: #e8e8e8;
+}
+#search-box .dropdown-menu > .active > span,
+#search-box .dropdown-menu > .active > span:hover,
+#search-box .dropdown-menu > .active > span:focus {
+    color: #ffffff;
+    text-decoration: none;
+    outline: 0;
+    background-color: #2ecc71;
+}
+
+#search-box .dropdown-menu > li .deep-one-level {
+    padding-left: 40px;
+}
+
+#search-box .dropdown-menu > li .deep-two-level {
+    padding-left: 60px;
+}
+
+/*
+ End of header
+*/
+
+/*
+ Site footer
+*/
+
+#footer {
+    background-color: #95a5a6;
+    margin-top: 160px;
+    z-index: 1;
+}
+
+#cart-price {
+    font-size: 300px;
+    margin-top: -150px;
+    line-height: 1.228571429;
+}
+
+#cart-price-value {
+    font-size: 30px;
+    font-family: 'BBCNassim';
+    direction: rtl;
+    position: absolute;
+    margin-left: -250px;
+    margin-top: 140px;
+    color: #ffffff;
+}
+
+#footer .social {
+    font-size: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+}
+
+#footer a,
+#footer a:hover,
+#footer a:focus{
+    color: #333333;
+    text-decoration: none;
+}
+
+/*Social networks*/
+#footer .google-plus:hover {
+    color: #c03a20;
+}
+
+#footer .twitter:hover{
+    color: #269dda;
+}
+
+#footer .facebook:hover{
+    color: #4369ad;
+}
+
+#footer ul {
+    padding-top: 10px;
+    font-size: 18px;
+}
+
+#footer ul li {
+    padding-bottom: 10px;
+}
+
+#footer .slogan {
+    font-size: 36px;
+    padding-top: 10px;
+    direction: rtl;
+}
+
+#footer .slogan .first-row {
+    text-align: right;
+    padding-right: 10px;
+}
+
+#footer .slogan .second-row {
+    text-align: center;
+}
+
+#footer .slogan .third-row {
+    text-align: left;
+    padding-left: 10px;
+}
+
+#footer .slogan {
+    z-index: 1;
+}
+/*
+ End of footer
+*/
+
+/*Group Box*/
+
+.group-box{
+    direction: rtl;
+    border: solid #aaaaaa medium;
+    border-radius: 7px;
+    padding-right: 20px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.group-box header {
+    background-color: #ffffff;
+    position: absolute;
+    font-size: 20px;
+    top: -15px;
+    display: block;
+}
+
+.group-box header .glyphicon {
+    margin-left: 6px;
+}
+
+
+/*Show products*/
+.group-box .product-show {
+    text-align: justify;
+    margin-top: 20px;
+}
+.group-box .thumbnail img {
+    width: 150px;
+    height: 125px;
+    max-height: 125px;
+}
+.group-box .product-show .caption {
+    text-align: center;
+}
+.group-box .product-show a {
+    text-decoration: none;
+}
+
+/*Introduction product*/
+
+.group-box #content p{
+    text-indent: 10px;
+    text-align: justify;
+}
+
+.group-box.product-info {
+    height: 325px;
+    max-height: 325px;
+}
