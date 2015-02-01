@@ -13,31 +13,28 @@
     <tr>
         <th></th>
         <th>
-            ImageFolderId
+            RoomTypeName
         </th>
         <th>
-            Title
-        </th>
-        <th>
-            Description
+            RoomTypeDescription
         </th>
         <th>
             RoomCapacity
         </th>
         <th>
-            TotalCount
-        </th>
-        <th>
-            VacantCount
-        </th>
-        <th>
             Price
         </th>
         <th>
-            RoomTypeHotel
+            Hotels
         </th>
         <th>
-            RoomTypeImageFiles
+            ImageFiles
+        </th>
+        <th>
+            Reservations
+        </th>
+        <th>
+            RoomReviews
         </th>
     </tr>
 
@@ -49,31 +46,28 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.RoomTypeId })
         </td>
         <td>
-			@item.ImageFolderId
+			@item.RoomTypeName
         </td>
         <td>
-			@item.Title
-        </td>
-        <td>
-			@item.Description
+			@item.RoomTypeDescription
         </td>
         <td>
 			@item.RoomCapacity
         </td>
         <td>
-			@item.TotalCount
-        </td>
-        <td>
-			@item.VacantCount
-        </td>
-        <td>
 			@item.Price
         </td>
         <td>
-			@(item.RoomTypeHotel == null ? "None" : item.RoomTypeHotel.Name)
+			@Html.DisplayTextFor(_ => item.Hotels).ToString()
         </td>
         <td>
-			@(item.RoomTypeImageFiles == null ? "None" : item.RoomTypeImageFiles.Count.ToString())
+			@(item.ImageFiles == null ? "None" : item.ImageFiles.Count.ToString())
+        </td>
+        <td>
+			@(item.Reservations == null ? "None" : item.Reservations.Count.ToString())
+        </td>
+        <td>
+			@(item.RoomReviews == null ? "None" : item.RoomReviews.Count.ToString())
         </td>
     </tr>
 }

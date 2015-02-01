@@ -18,7 +18,7 @@ namespace Simorgh.Controllers
 
         public ViewResult Index()
         {
-            return View(context.RoomTypes.Include(roomtype => roomtype.RoomTypeImageFiles).ToList());
+            return View(context.RoomTypes.Include(roomtype => roomtype.ImageFiles).Include(roomtype => roomtype.Reservations).Include(roomtype => roomtype.RoomReviews).ToList());
         }
 
         //

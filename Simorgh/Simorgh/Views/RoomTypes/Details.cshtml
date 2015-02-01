@@ -9,32 +9,29 @@
 <fieldset>
     <legend>RoomType</legend>
 
-    <div class="display-label">ImageFolderId</div>
-    <div class="display-field">@Model.ImageFolderId</div>
+    <div class="display-label">RoomTypeName</div>
+    <div class="display-field">@Model.RoomTypeName</div>
 
-    <div class="display-label">Title</div>
-    <div class="display-field">@Model.Title</div>
-
-    <div class="display-label">Description</div>
-    <div class="display-field">@Model.Description</div>
+    <div class="display-label">RoomTypeDescription</div>
+    <div class="display-field">@Model.RoomTypeDescription</div>
 
     <div class="display-label">RoomCapacity</div>
     <div class="display-field">@Model.RoomCapacity</div>
 
-    <div class="display-label">TotalCount</div>
-    <div class="display-field">@Model.TotalCount</div>
-
-    <div class="display-label">VacantCount</div>
-    <div class="display-field">@Model.VacantCount</div>
-
     <div class="display-label">Price</div>
     <div class="display-field">@Model.Price</div>
 
-    <div class="display-label">RoomTypeHotel</div>
-    <div class="display-field">@(Model.RoomTypeHotel == null ? "None" : Model.RoomTypeHotel.Name)</div>
+    <div class="display-label">Hotels</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.Hotels).ToString()</div>
 
-    <div class="display-label">RoomTypeImageFiles</div>
-    <div class="display-field">@(Model.RoomTypeImageFiles == null ? "None" : Model.RoomTypeImageFiles.Count.ToString())</div>
+    <div class="display-label">ImageFiles</div>
+    <div class="display-field">@(Model.ImageFiles == null ? "None" : Model.ImageFiles.Count.ToString())</div>
+
+    <div class="display-label">Reservations</div>
+    <div class="display-field">@(Model.Reservations == null ? "None" : Model.Reservations.Count.ToString())</div>
+
+    <div class="display-label">RoomReviews</div>
+    <div class="display-field">@(Model.RoomReviews == null ? "None" : Model.RoomReviews.Count.ToString())</div>
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.RoomTypeId }) |
