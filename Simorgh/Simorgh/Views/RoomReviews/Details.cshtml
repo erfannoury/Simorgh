@@ -1,0 +1,41 @@
+@model Simorgh.Models.RoomReview
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>RoomReview</legend>
+
+    <div class="display-label">UserId</div>
+    <div class="display-field">@Model.UserId</div>
+
+    <div class="display-label">ReviewTimestap</div>
+    <div class="display-field">@String.Format("{0:g}", Model.ReviewTimestap)</div>
+
+    <div class="display-label">Review</div>
+    <div class="display-field">@Model.Review</div>
+
+    <div class="display-label">UpVotes</div>
+    <div class="display-field">@Model.UpVotes</div>
+
+    <div class="display-label">DownVotes</div>
+    <div class="display-field">@Model.DownVotes</div>
+
+    <div class="display-label">IsConfirmed</div>
+    <div class="display-field">@Model.IsConfirmed</div>
+
+    <div class="display-label">AspNetUser</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.AspNetUser).ToString()</div>
+
+    <div class="display-label">RoomType</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.RoomType).ToString()</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.RoomReviewId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
